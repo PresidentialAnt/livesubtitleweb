@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import "./styles.css";
+import { useState } from 'react';
+
+import SideBar from "./Components/Burger.js";
+import ManInput from './Pages/ManInput.js';
 
 function App() {
+
+  const [Word, setWord]=useState("Default")
+  const [DarkMode, setDarkMode]=useState(false)
+
+  const onClick = () => {
+    setDarkMode(prevmode => !prevmode)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} />
+
+      <main id="page-wrap">
+        <ManInput playGame={onClick} DarkMode={DarkMode} word={Word}/>
+      </main>
+
     </div>
   );
 }
