@@ -9,15 +9,29 @@ function App() {
 
   const [Word, setWord]=useState("Default")
   const [DarkMode, setDarkMode]=useState(false)
-  const [Page, setPage]=useState(1)
-
+  const [Page, setPage]=useState(2) /*  Page numbers:
+                                        0 is GDPR/cookies
+                                        1 is individual info
+                                        2 is game/raw select
+                                        3 is raw entry
+                                        4 is audio confirmation
+                                        5 is game
+                                        8 is settings
+                                        9 is about page */
+                                        
   const onClick = () => {
     setDarkMode(prevmode => !prevmode)
   }
 
+  const rawData = () =>{
+    setPage(3);
+  }
+
   function PageSelect(Page){
-    if (Page==1){
-      return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word}/>;
+    if (Page==2){
+      return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>;
+    }else if(Page==3){
+      return <h1>{Word}</h1>
     }
   }
 
