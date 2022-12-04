@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import SideBar from "./Components/Burger.js";
 import ManInput from './Pages/ManInput.js';
+import About from './Pages/About.js';
 
 function App() {
 
@@ -28,10 +29,13 @@ function App() {
   }
 
   function PageSelect(Page){
-    if (Page==2){
-      return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>;
-    }else if(Page==3){
-      return <h1>{Word}</h1>
+    switch(Page){
+      case 2:
+        return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>;
+      case 3:
+        return <h1>{Word}</h1>
+      case 9:
+        return <About/>
     }
   }
 
