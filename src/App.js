@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './App.css';
 import "./styles.css";
 import { useState } from 'react';
@@ -5,6 +6,13 @@ import { useState } from 'react';
 import SideBar from "./Components/Burger.js";
 import ManInput from './Pages/ManInput.js';
 import About from './Pages/About.js';
+=======
+import React from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
+import SideBar from "./Burger";
+>>>>>>> miro
 
 function App() {
 
@@ -40,6 +48,7 @@ function App() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="App">
       <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} />
 
@@ -48,6 +57,14 @@ function App() {
         
       </main>
 
+=======
+    <div id="App">
+      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} />
+
+      <div id="page-wrap">
+        <h1>Hallo</h1>
+      </div>
+>>>>>>> miro
     </div>
   );
 }

@@ -74,6 +74,7 @@ body {
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+<<<<<<< HEAD
 .ManInput{
   display: flex;
   flex-direction: column;
@@ -93,3 +94,5 @@ body {
   width: calc(140px + 6vw);
   height: calc(35px + 3vh);
 }
+=======
+>>>>>>> miro
