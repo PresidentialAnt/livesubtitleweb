@@ -27,7 +27,9 @@ function App() {
   const rawData = () =>{
     setPage(3);
   }
-
+  const aboutDir = () =>{
+    setPage(9);
+  }
   function PageSelect(Page){
     switch(Page){
       case 2:
@@ -35,13 +37,13 @@ function App() {
       case 3:
         return <h1>{Word}</h1>
       case 9:
-        return <About/>
+        return <About aboutDir={aboutDir}/>
     }
   }
 
   return (
     <div className="App">
-      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} />
+      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} aboutDir={aboutDir}/>
 
       <main id="page-wrap">
         {PageSelect(Page)}
