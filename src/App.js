@@ -9,6 +9,7 @@ function App() {
 
   const [Word, setWord]=useState("Default")
   const [DarkMode, setDarkMode]=useState(false)
+  
   const [Page, setPage]=useState(2) /*  Page numbers:
                                         0 is GDPR/cookies
                                         1 is individual info
