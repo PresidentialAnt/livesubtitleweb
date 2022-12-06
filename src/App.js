@@ -6,6 +6,7 @@ import SideBar from "./Components/Burger.js";
 import ManInput from './Pages/ManInput.js';
 import About from './Pages/About.js';
 import Settings from './Pages/Settings';
+import RawData from './Pages/RawData';
 
 function App() {
 
@@ -42,7 +43,7 @@ function App() {
       case 2:
         return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>;
       case 3:
-        return <h1>{Word}</h1>
+        return <RawData/>
       case 8:
         return <Settings/>
       case 9:
