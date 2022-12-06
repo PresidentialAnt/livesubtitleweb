@@ -1,10 +1,10 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 
-const SideBar = ({aboutDir}) => {
+const SideBar = ({aboutDir,settingsDir,indinfDir}) => {
   return (
     // Pass on our props
-    <Menu {...aboutDir}>
+    <Menu {...SideBar}>
       <a className="menu-item" href="/">
         Home
       </a>
@@ -13,13 +13,9 @@ const SideBar = ({aboutDir}) => {
         About
       </l>
 
-      <l className="menu-item">
-        Services
+      <l className="menu-item" onClick={settingsDir}>
+        Settings
       </l>
-
-      <a className="menu-item" href="/contact">
-        Contact us
-      </a>
     </Menu>
   );
 };

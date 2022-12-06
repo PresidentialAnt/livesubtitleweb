@@ -5,6 +5,7 @@ import { useState } from 'react';
 import SideBar from "./Components/Burger.js";
 import ManInput from './Pages/ManInput.js';
 import About from './Pages/About.js';
+import Settings from './Pages/Settings';
 
 function App() {
 
@@ -24,8 +25,14 @@ function App() {
     setDarkMode(prevmode => !prevmode)
   }
 
+  const indinfDir = () =>{
+    setPage(1);
+  }
   const rawData = () =>{
     setPage(3);
+  }
+  const settingsDir = () =>{
+    setPage(8);
   }
   const aboutDir = () =>{
     setPage(9);
@@ -36,14 +43,16 @@ function App() {
         return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>;
       case 3:
         return <h1>{Word}</h1>
+      case 8:
+        return <Settings/>
       case 9:
-        return <About aboutDir={aboutDir}/>
+        return <About/>
     }
   }
 
   return (
     <div className="App">
-      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} aboutDir={aboutDir}/>
+      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} aboutDir={aboutDir} settingsDir={settingsDir}/>
 
       <main id="page-wrap">
         {PageSelect(Page)}
