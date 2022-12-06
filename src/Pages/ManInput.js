@@ -31,4 +31,5 @@ const ManInput = ({playGame,rawData, DarkMode, word}) => {
   )
 }
 
+
 export default ManInput
