@@ -100,11 +100,6 @@ section > button {
   width: calc(180px + 10vw);
   height: calc(70px + 5vh);
 }
-.small-button{
-
-  
-}
-
 .Replay{
   display: flex;
   flex-direction: column;
