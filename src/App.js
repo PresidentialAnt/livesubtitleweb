@@ -38,7 +38,7 @@ function App() {
     }else if (Page==1){
       return <Input onClick={nextPage}/>
     }else if (Page==2){
-      return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} nextPage={nextPage}/>;
+      return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage}/>;
     }else if(Page==3){
       return <Record onClick={nextPage}/>
     }else if(Page==4){
