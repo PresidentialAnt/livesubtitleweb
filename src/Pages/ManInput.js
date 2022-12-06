@@ -24,9 +24,9 @@ const ManInput = ({playGame,rawData, DarkMode, word}) => {
   }
 
   return (
-    <section className='ManInput'>
-        <button className='playGame' onClick={playGame} style={b1style} onMouseEnter={toggleHoverb1} onMouseLeave={toggleHoverb1}>Play Game</button>
-        <button className='rawData' onClick={rawData} style={b2style} onMouseEnter={toggleHoverb2} onMouseLeave={toggleHoverb2}>Record Voice Only</button>
+    <section>
+        <button className='big--button' onClick={playGame} style={b1style} onMouseEnter={toggleHoverb1} onMouseLeave={toggleHoverb1}>Play Game</button>
+        <button className='small--button' onClick={rawData} style={b2style} onMouseEnter={toggleHoverb2} onMouseLeave={toggleHoverb2}>Record Voice Only</button>
     </section>
   )
 }

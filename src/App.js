@@ -2,15 +2,19 @@ import './App.css';
 import "./styles.css";
 import { useState } from 'react';
 
+import GDPRetc from './Pages/GDPRetc';
+import Input from './Pages/Input.js';
 import SideBar from "./Components/Burger.js";
 import ManInput from './Pages/ManInput.js';
+import Replay from './Pages/Replay.js';
+import Record from './Pages/Record';
 
 function App() {
 
   const [Word, setWord]=useState("Default")
   const [DarkMode, setDarkMode]=useState(false)
   
-  const [Page, setPage]=useState(2) /*  Page numbers:
+  const [Page, setPage]=useState(0) /*  Page numbers:
                                         0 is GDPR/cookies
                                         1 is individual info
                                         2 is game/raw select
@@ -25,14 +29,20 @@ function App() {
   }
 
   const rawData = () =>{
-    setPage(3);
+    setPage(Page+1);
   }
 
   function PageSelect(Page){
-    if (Page==2){
+    if (Page==0){
+      return <GDPRetc onClick={rawData}/>
+    }else if (Page==1){
+      return <Input onClick={rawData}/>
+    }else if (Page==2){
       return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>;
     }else if(Page==3){
-      return <h1>{Word}</h1>
+      return <Record onClick={rawData}/>
+    }else if(Page==4){
+      return <Replay playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>
     }
   }
 
