@@ -1,6 +1,6 @@
 import {ReactMediaRecorder} from 'react-media-recorder';
-import Store_audio from "./store_audio";
-import Word_generator from './Word_generator';
+import Store_audio from "../Components/store_audio";
+import Word_generator from '../Components/Word_generator';
 
 function Record({onClick}) {
   const x = "Hi"; // Change depending on what word to say
