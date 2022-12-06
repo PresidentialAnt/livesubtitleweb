@@ -28,21 +28,21 @@ function App() {
     setDarkMode(prevmode => !prevmode)
   }
 
-  const rawData = () =>{
+  const nextPage = () =>{
     setPage(Page+1);
   }
 
   function PageSelect(Page){
     if (Page==0){
-      return <GDPRetc onClick={rawData}/>
+      return <GDPRetc onClick={nextPage}/>
     }else if (Page==1){
-      return <Input onClick={rawData}/>
+      return <Input onClick={nextPage}/>
     }else if (Page==2){
-      return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>;
+      return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} nextPage={nextPage}/>;
     }else if(Page==3){
-      return <Record onClick={rawData}/>
+      return <Record onClick={nextPage}/>
     }else if(Page==4){
-      return <Replay playGame={onClick} DarkMode={DarkMode} word={Word} rawData={rawData}/>
+      return <Replay playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage}/>
     }
   }
 
