@@ -1,25 +1,22 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 
-export default props => {
+const SideBar = ({aboutDir,settingsDir}) => {
   return (
     // Pass on our props
-    <Menu {...props}>
+    <Menu {...SideBar}>
       <a className="menu-item" href="/">
         Home
       </a>
 
-      <a className="menu-item" href="/about">
+      <l className="menu-item" onClick={aboutDir} >
         About
-      </a>
+      </l>
 
-      <a className="menu-item" href="/services">
-        Services
-      </a>
-
-      <a className="menu-item" href="/contact">
-        Contact us
-      </a>
+      <l className="menu-item" onClick={settingsDir}>
+        Settings
+      </l>
     </Menu>
   );
 };
+export default SideBar

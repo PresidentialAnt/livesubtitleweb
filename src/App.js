@@ -7,12 +7,15 @@ import Input from './Pages/Input.js';
 import SideBar from "./Components/Burger.js";
 import ManInput from './Pages/ManInput.js';
 import Replay from './Pages/Replay.js';
-import Record from './Pages/Record';
+import Record from './Pages/Record.js';
+import About from './Pages/About.js';
+import Settings from './Pages/Settings.js';
 
 function App() {
 
   const [Word, setWord]=useState("Default")
   const [DarkMode, setDarkMode]=useState(false)
+  const [Recording, setRecording]=useState()
   
   const [Page, setPage]=useState(0) /*  Page numbers:
                                         0 is GDPR/cookies
@@ -28,27 +31,44 @@ function App() {
     setDarkMode(prevmode => !prevmode)
   }
 
+function setAudio(e){
+  setRecording(e);
+  console.log(e);
+}
   const nextPage = () =>{
     setPage(Page+1);
   }
 
+  // theres gotta be a better way to do this, but you cant assign <SideBar aboutDir = {setPage(9)}> so good enough for now
+  const settingsDir = () =>{
+    setPage(8);
+  }
+  const aboutDir = () =>{
+    setPage(9);
+  }
+
   function PageSelect(Page){
-    if (Page==0){
-      return <GDPRetc onClick={nextPage}/>
-    }else if (Page==1){
-      return <Input onClick={nextPage}/>
-    }else if (Page==2){
-      return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage}/>;
-    }else if(Page==3){
-      return <Record onClick={nextPage}/>
-    }else if(Page==4){
-      return <Replay playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage}/>
+    switch (Page){
+      case 0:
+        return <GDPRetc onClick={nextPage}/>
+      case 1:
+        return <Input onClick={nextPage}/>
+      case 2:
+        return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage}/>;
+      case 3:
+        return <Record onClick={nextPage} setAudio={setAudio}/>
+      case 4:
+        return <Replay playGame={onClick} DarkMode={DarkMode} confirmRecording={nextPage} retakeRecording={setPage(3)}/>
+      case 8:
+        return <Settings/>
+      case 9:
+        return <About/>
     }
   }
 
   return (
     <div className="App">
-      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} />
+      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} aboutDir={aboutDir} settingsDir={settingsDir}/>
 
       <main id="page-wrap">
         {PageSelect(Page)}
