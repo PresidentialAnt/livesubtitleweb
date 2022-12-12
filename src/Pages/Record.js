@@ -35,8 +35,8 @@ return (
         <div>
          <Word_generator word = {Word}></Word_generator>
           <p> Recording status: {status}</p>
-          <button className='small--button' style={b2style} onMouseEnter={toggleHoverb2} onMouseLeave={toggleHoverb2}>Start Recording</button>
-          <button className='small--button' onClick={onClick} style={b1style} onMouseEnter={toggleHoverb1} onMouseLeave={toggleHoverb1}>Stop Recording</button>
+          <button className='small--button' onClick = {startRecording} style={b2style} onMouseEnter={toggleHoverb2} onMouseLeave={toggleHoverb2}>Start Recording</button>
+          <button className='small--button' onClick={()=>{stopRecording(); onClick();}} style={b1style} onMouseEnter={toggleHoverb1} onMouseLeave={toggleHoverb1}>Stop Recording</button>
           {/* <audio src={mediaBlobUrl} controls />
           {/* <Store_audio url = {mediaBlobUrl}></Store_audio> */}
           {/* <button className='small--button' onClick={onClick}>Next</button> */} 
