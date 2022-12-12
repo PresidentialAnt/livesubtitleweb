@@ -83,6 +83,12 @@ section{
   justify-content: top;
   height:70vh;
 }
+.div{
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  justify-content: center;
+}
 
 .gdpr_section{
   padding-block: 5vh;

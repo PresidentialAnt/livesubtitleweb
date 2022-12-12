@@ -1,7 +1,7 @@
 import React from 'react'
 import {ReactMediaRecorder} from 'react-media-recorder';
 import {useState} from 'react'
-const Replay = ({playGame,confirmRecording,retakeRecording, DarkMode, Recording}) => {
+const Replay = ({confirmRecording,retakeRecording, DarkMode, Recording}) => {
   
   const [Hover1, setHover1] = useState(false)
   const [Hover2, setHover2] = useState(false)
@@ -22,7 +22,7 @@ const Replay = ({playGame,confirmRecording,retakeRecording, DarkMode, Recording}
   }
 
   let b2style = {
-    backgroundColor: Hover2 ? (DarkMode ?"grey ":"grey") :(DarkMode ? "white" : "red"),
+    backgroundColor: Hover2 ? (DarkMode ?"grey ":"grey") :(DarkMode ? "white" : "green"),
     color: DarkMode ? "black" : "white",
   }
 
@@ -33,7 +33,6 @@ const Replay = ({playGame,confirmRecording,retakeRecording, DarkMode, Recording}
 
   return (
     <section>
-        <button className='big--button' onClick={playGame} style={b1style} onMouseEnter={toggleHoverb1} onMouseLeave={toggleHoverb1}>Play Recording</button>
         <audio controls autoPlay />
         <div className='options'>
           <button className='small--button' onClick={retakeRecording} style={b3style} onMouseEnter={toggleHoverb3} onMouseLeave={toggleHoverb3}>re-take recording</button>

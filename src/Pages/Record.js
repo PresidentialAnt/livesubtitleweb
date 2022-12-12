@@ -1,24 +1,45 @@
 import {ReactMediaRecorder} from 'react-media-recorder';
 import Store_audio from "../Components/store_audio";
 import Word_generator from '../Components/Word_generator';
+import {useState} from 'react'
 
-function Record({onClick, Word, setAudio}) {
+function Record({onClick, Word}) {
   const x = "Hi"; // Change depending on what word to say
+  const [Hover1, setHover1] = useState(false)
+  const [Hover2, setHover2] = useState(false)
+
+  const toggleHoverb1 = ()=>{
+    setHover1(prevstate => !prevstate)
+  }
+
+  const toggleHoverb2 = ()=>{
+    setHover2(prevstate => !prevstate)
+  }
+
+  let b1style = {
+    backgroundColor: Hover1 ? "grey": "red",
+    color: "white",
+  }
+
+  let b2style = {
+    backgroundColor: Hover2 ? "grey": "green",
+    color: "white",
+  }
+
 
 return (
   <section>
-    <ReactMediaRecorder
+<ReactMediaRecorder
       audio
       render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
         <div>
-         <Word_generator word = {x}></Word_generator>
+         <Word_generator word = {Word}></Word_generator>
           <p> Recording status: {status}</p>
-          <button className='small--button' onClick={startRecording}>Start Recording</button>
-            <button className='small--button' onClick={stopRecording}>Stop Recording</button>
-          {/* <button className='small--button' onClick={setAudio(mediaBlobUrl)}>set audio</button> */}
-          <button className='small--button' onClick={onClick}>Stop Recording</button>
-          {/* <audio src={mediaBlobUrl} controls /> */}
+          <button className='small--button' style={b2style} onMouseEnter={toggleHoverb2} onMouseLeave={toggleHoverb2}>Start Recording</button>
+          <button className='small--button' onClick={onClick} style={b1style} onMouseEnter={toggleHoverb1} onMouseLeave={toggleHoverb1}>Stop Recording</button>
+          {/* <audio src={mediaBlobUrl} controls />
           {/* <Store_audio url = {mediaBlobUrl}></Store_audio> */}
+          {/* <button className='small--button' onClick={onClick}>Next</button> */} 
         </div> 
       )}
     />

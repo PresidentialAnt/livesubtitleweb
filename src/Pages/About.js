@@ -2,10 +2,11 @@ import React from 'react'
 
 const About = () => {
     return(
-        <div>
+        <section>
             <h1>About</h1>
-            <p>5 Engineers desperately want your kid to speak into a microphone</p>
-        </div>
+            <p>This tool is designed to take recordings from individuals with cerebral palsy to train a word recognition machine learning model. </p>
+            <p>The recordings are also available to the speech therapists of the users.</p>
+        </section>
          
     )
 }

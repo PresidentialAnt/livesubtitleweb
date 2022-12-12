@@ -8,7 +8,7 @@ const GDPRetc = ({onClick}) => {
   return (
     <section className='gdpr_section'>
       <form className='input--box' onSubmit={onSubmit}>
-        <h2>GDPR blabla</h2>
+        <h2>GDPR</h2>
         <p className='GDPR'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus scelerisque sit amet elit non porttitor. Phasellus in enim rhoncus, luctus sapien eu, sodales nunc. Suspendisse potenti. Curabitur euismod libero lorem, viverra pretium risus rhoncus et. Aenean ultrices nec erat at scelerisque. Etiam accumsan neque ac ipsum scelerisque rutrum. Quisque sed diam faucibus, commodo tellus id, iaculis nunc. Vestibulum ac vehicula lacus, non lobortis nibh. Ut rutrum pellentesque augue nec consectetur. Sed eget odio mauris. Praesent imperdiet ante sit amet lacus finibus, eu scelerisque erat rutrum. Nunc ac libero est.
 
 Pellentesque scelerisque mauris scelerisque lobortis varius. Mauris finibus hendrerit ex eget rhoncus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec scelerisque nulla libero, eget tincidunt nunc placerat sed. Aliquam aliquet mi in erat rutrum rhoncus. Mauris facilisis, risus euismod luctus rhoncus, lacus lacus condimentum nisl, sit amet dictum lacus tellus at mi. Morbi auctor vulputate neque, eu iaculis leo eleifend eget. Ut tincidunt id sapien vitae rhoncus. Donec eget tempor turpis. Vivamus congue justo a lorem efficitur dictum sed sit amet eros. Donec molestie luctus rutrum.
