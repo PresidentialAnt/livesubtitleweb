@@ -31,6 +31,7 @@ return (
   <section>
 <ReactMediaRecorder
       audio
+      onStop={(mediaBlobUrl => { console.log(mediaBlobUrl)} )}
       render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
         <div>
          <Word_generator word = {Word}></Word_generator>
