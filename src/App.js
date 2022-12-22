@@ -1,9 +1,10 @@
 import './App.css';
 import "./styles.css";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import GDPRetc from './Pages/GDPRetc';
 import Input from './Pages/Input.js';
+import Register from './Pages/Register';
 import SideBar from "./Components/Burger.js";
 import ManInput from './Pages/ManInput.js';
 import Replay from './Pages/Replay.js';
@@ -11,6 +12,8 @@ import Record from './Pages/Record.js';
 import About from './Pages/About.js';
 import Settings from './Pages/Settings.js';
 import Thanks from './Pages/Thanks';
+import { UrlContext } from './Components/UrlContext';
+
 
 function App() {
   var randomWords = require('random-words');
@@ -21,8 +24,10 @@ function App() {
     return(tmpword)
   }
 
+  const [User, setUser]=useState('')
   const [Word, setWord]=useState(randomWord)
   const [DarkMode, setDarkMode]=useState(false)
+  const [url, setUrl] = useState('No sound file passed in');
   
   const [Page, setPage]=useState(0) /*  Page numbers:
                                         0 is GDPR/cookies
@@ -47,11 +52,8 @@ function App() {
   }
 
   // theres gotta be a better way to do this, but you cant assign <SideBar aboutDir = {setPage(9)}> so good enough for now
-  const settingsDir = () =>{
-    setPage(8);
-  }
-  const aboutDir = () =>{
-    setPage(9);
+  const loginDir = () =>{
+    setPage(1);
   }
 
   const recordDir = () =>{
@@ -59,29 +61,44 @@ function App() {
     setWord(randomWord);
   }
 
+  const settingsDir = () =>{
+    setPage(8);
+  }
+
+  const aboutDir = () =>{
+    setPage(9);
+  }
+
+  const registerDir = () =>{
+    setPage(10);
+  }
+
+
 
   function PageSelect(Page){
     switch (Page){
       case 0:
-        return <GDPRetc onClick={nextPage}/>
+        return <GDPRetc onClick={nextPage} />
       case 1:
-        return <Input onClick={nextPage}/>
+        return <Input onClick={nextPage} registerDir={registerDir} setUser={setUser}/>
       case 2:
-        return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage}/>;
+        return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage} User={User}/>;
       case 3:
-        return <Record onClick={nextPage} Word={Word}/>
+        return <UrlContext.Provider value = {{url, setUrl}}><Record onClick={nextPage} Word={Word}/></UrlContext.Provider>
       case 4:
-        return <Replay playGame={onClick} DarkMode={DarkMode}  confirmRecording={nextPage} retakeRecording={prevPage}/>
+        return <UrlContext.Provider value = {{url, setUrl}}><Replay playGame={onClick} DarkMode={DarkMode}  confirmRecording={nextPage} retakeRecording={prevPage}/></UrlContext.Provider>
       case 5:
         return <Thanks onClick={recordDir}/>
       case 8:
         return <Settings/>
       case 9:
         return <About/>
+      case 10:
+        return <Register onClick={nextPage} loginDir= {loginDir}/>
     }
   }
   return (
-    <div className="App" onload="randomWord()">
+    <div className="App">
       <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} aboutDir={aboutDir} settingsDir={settingsDir}/>
 
       <main id="page-wrap">

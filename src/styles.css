@@ -132,7 +132,7 @@ section > button {
   display: flex;
   flex-direction: column;
   align-self: center;
-  width: calc(500px - 100px);
+  width: calc(200px + 30vw);
   border-radius: 10px;
   /* box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1); */
   margin-bottom: 10px;
@@ -162,3 +162,16 @@ section > button {
   margin-bottom: 10px;
 }
 
+.bottom_right{
+  margin-left: auto;
+  padding:10px
+}
+
+.dropdown {
+  margin: 5px;
+  border-radius: 15px;
+  border: 2.5px solid grey;
+  padding: 5px;
+  padding-block: 8px;
+  margin-bottom: 10px;
+}

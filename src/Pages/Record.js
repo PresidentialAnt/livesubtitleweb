@@ -1,19 +1,19 @@
 import {ReactMediaRecorder} from 'react-media-recorder';
-import Store_audio from "../Components/store_audio";
 import Word_generator from '../Components/Word_generator';
-import {useState} from 'react'
+import {useContext, useState} from 'react'
+import { UrlContext } from '../Components/UrlContext';
 
 function Record({onClick, Word}) {
   const x = "Hi"; // Change depending on what word to say
   const [Hover1, setHover1] = useState(false)
   const [Hover2, setHover2] = useState(false)
-
+  const {url, setUrl}= useContext(UrlContext)
   const toggleHoverb1 = ()=>{
-    setHover1(prevstate => !prevstate)
+    setHover1(!Hover1)
   }
 
   const toggleHoverb2 = ()=>{
-    setHover2(prevstate => !prevstate)
+    setHover2(!Hover2)
   }
 
   let b1style = {
@@ -31,7 +31,7 @@ return (
   <section>
 <ReactMediaRecorder
       audio
-      onStop={(mediaBlobUrl => { console.log(mediaBlobUrl)} )}
+      onStop={(mediaBlobUrl => {setUrl(mediaBlobUrl)} )}
       render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
         <div>
          <Word_generator word = {Word}></Word_generator>

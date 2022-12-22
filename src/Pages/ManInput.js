@@ -1,6 +1,7 @@
 import React from 'react'
+import { useEffect } from 'react';
 import {useState} from 'react'
-const ManInput = ({rawData, DarkMode}) => {
+const ManInput = ({rawData, DarkMode, User}) => {
   
   const [Hover1, setHover1] = useState(false)
   const [Hover2, setHover2] = useState(false)
@@ -22,7 +23,6 @@ const ManInput = ({rawData, DarkMode}) => {
     backgroundColor: Hover2 ? (DarkMode ?"grey ":"grey") :(DarkMode ? "white" : "green"),
     color: DarkMode ? "black" : "white",
   }
-
   return (
     <section>
               <button className='big--button' onClick={rawData} style={b2style} onMouseEnter={toggleHoverb2} onMouseLeave={toggleHoverb2}>Record Voice Only</button>

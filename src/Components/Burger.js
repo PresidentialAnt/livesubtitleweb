@@ -9,13 +9,13 @@ const SideBar = ({aboutDir,settingsDir}) => {
         Home
       </a>
 
-      <l className="menu-item" onClick={aboutDir} >
+      <label className="menu-item" onClick={aboutDir} >
         About
-      </l>
+      </label>
 
-      <l className="menu-item" onClick={settingsDir}>
+      <label className="menu-item" onClick={settingsDir}>
         Settings
-      </l>
+      </label>
     </Menu>
   );
 };
