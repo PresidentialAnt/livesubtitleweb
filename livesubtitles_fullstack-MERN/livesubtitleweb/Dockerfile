@@ -1,17 +1,10 @@
-# Specify base image
-FROM node:16
+FROM node:18
 
-# Create app directory
-WORKDIR /src/app
-
-# Copy all files from the current directory to the Docker image
-COPY . .
-
-# Install dependencies
+WORKDIR /livesubtitleweb
+COPY package.json ./
 RUN npm install
-
-# Expose port 3000
+COPY . .
+ENV PORT=3000
 EXPOSE 3000
 
-# Start the server
-CMD [ "npm", "start" ]
+CMD npm start
