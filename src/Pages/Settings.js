@@ -45,7 +45,7 @@ const Settings = () => {
         <Header>Settings</Header>
         <ThemeContainer>
           <p>Font:</p>
-          <input type="radio" class="radio-button" name="font" checked onClick={() => setGlobalFontFamily('monospace')} />
+          <input type="radio" class="radio-button" name="font" onClick={() => setGlobalFontFamily('monospace')} />
           <p>Default</p>
           <input type="radio" class="radio-button" name="font" onClick={() => setGlobalFontFamily('Arial')} />
           <p>Better legibility</p>
@@ -54,7 +54,7 @@ const Settings = () => {
           <p>Font size:</p>
           <input type="radio" class="radio-button" name="size" onClick={() => setGlobalFontSize('14px')}/>
           <p>Small</p>
-          <input type="radio" class="radio-button" name="size" checked onClick={() => setGlobalFontSize('18px')}/>
+          <input type="radio" class="radio-button" name="size" onClick={() => setGlobalFontSize('18px')}/>
           <p>Medium</p>
           <input type="radio" class="radio-button" name="size" onClick={() => setGlobalFontSize('20px')}/>
           <p>Large</p>
