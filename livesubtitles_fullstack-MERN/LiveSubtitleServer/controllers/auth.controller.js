@@ -1,20 +1,17 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const path = require('path');
-const data = {}
-data.userlist = require('../models/accounts.json')
-
-users = [{  //To be replaced with actual database
-    username: "Fred123",
-    password: "$2b$10$iRwJOgtDDcCHAwePEh1e4uglG.AtICBUZIdBlLJazOW2eKQGq2cPW", //The password is 1234. This is encypted
-    fullname: "Fred McDonald",
-    cplevel: "4"}
-];
+const fs = require('fs');
+const fsPromises = require('fs/promises')
+const userDB = {
+    userlist:require('../models/accounts.json'),
+    setUsers: function (userDB) {this.userlist = userDB}
+}
 
 const Login = async (req,res)=> { //Verifies existance in user array and checks password. Not ideal
     const username = req.body.username;
     const password = req.body.password;
-    user = users.find(user => user.username == username)
+    user = userDB.userlist.find(user => user.username === username)
     console.log(user)
     let msg= [false]
     if (user == null) {
@@ -32,24 +29,37 @@ const Register = async (req, res)=> { //allows addition to users array
     const password = req.body.password;
     const fullname = req.body.fullname;
     const cplevel = req.body.cplevel;
+
+    //mis-input conditions
+    if (!username || !password || !fullname || !cplevel) return res.status(400).send(['All fields must be filled in'])
+    duplicate = userDB.userlist.find(user => user.username === username)
+    if (duplicate) return res.status(409).send(['duplicate user']);
+
     try {
         const hashedPwd = await bcrypt.hash(password, 10);
-        users.push({
+
+        const newUser = {
             username: username,
             password: hashedPwd,
             unhashed_password: password, //for testing purposes, will be removed in release
             fullname: fullname,
             cplevel: cplevel
-        })
-        console.log(users)
-        res.status(201).json({ 'success': `New user ${user} created!` })
-    } catch {
+        }
+        userDB.setUsers([...userDB.userlist, newUser])
+        console.log(userDB.userlist)
+        await fsPromises.writeFile(
+            path.join(__dirname, '..', 'models', 'accounts.json')
+        , JSON.stringify(userDB.userlist, null, 4))
+        res.status(201).json({ 'success': `New user ${username} created!` })
+    } catch (err){
+        res.status(500).json({err: err.message})
+        console.log(err.message)
     }
     // console.log(users)
 };
 
 const getUsers = (req, res)=>{ //returns users as json
-    res.json(users)
+    res.json(userDB.userlist)
 }
 
 
