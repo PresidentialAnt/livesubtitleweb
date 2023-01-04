@@ -3,10 +3,10 @@ import "./styles.css";
 import { useEffect, useState } from 'react';
 
 import GDPRetc from './Pages/GDPRetc';
-import Input from './Pages/Input.js';
+import Login from './Pages/Login.js';
 import Register from './Pages/Register';
 import SideBar from "./Components/Burger.js";
-import ManInput from './Pages/ManInput.js';
+import ModeSelect from './Pages/ModeSelect.js';
 import Replay from './Pages/Replay.js';
 import Record from './Pages/Record.js';
 import About from './Pages/About.js';
@@ -80,9 +80,9 @@ function App() {
       case 0:
         return <GDPRetc onClick={nextPage} />
       case 1:
-        return <Input onClick={nextPage} registerDir={registerDir} setUser={setUser}/>
+        return <Login onClick={nextPage} registerDir={registerDir} setUser={setUser}/>
       case 2:
-        return <ManInput playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage} User={User}/>;
+        return <ModeSelect playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage} User={User}/>;
       case 3:
         return <UrlContext.Provider value = {{url, setUrl}}><Record onClick={nextPage} Word={Word}/></UrlContext.Provider>
       case 4:

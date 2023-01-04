@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const auth = require('../controllers/auth.controller')    
+const auth = require('../controllers/users.controller')
 
 router.get('/', auth.getUsers)
 

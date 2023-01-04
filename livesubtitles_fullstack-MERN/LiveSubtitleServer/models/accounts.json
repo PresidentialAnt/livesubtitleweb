@@ -1,8 +1,17 @@
 [
     {
+        "username": "trunk59f35",
+        "password": "$2b$10$cfUyNdxZ.AoxGOafAOFhJecaMPqG/32lR2hl0LPpFd/QRLB0ZfLCW",
+        "unhashed_password": "arwestdyuf",
+        "fullname": "qwerty",
+        "cplevel": "4",
+        "refreshToken": ""
+    },
+    {
         "username": "Fred123",
         "password": "$2b$10$iRwJOgtDDcCHAwePEh1e4uglG.AtICBUZIdBlLJazOW2eKQGq2cPW",
         "fullname": "Fred McDonald",
-        "cplevel": "4"
+        "cplevel": "4",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZyZWQxMjMiLCJpYXQiOjE2NzI4NTk5MDIsImV4cCI6MTY3MzQ2NDcwMn0.9mMqwCbBS3gNyF9D9lTAnSHJkyHKXFDGnHM2cHidVJM"
     }
 ]

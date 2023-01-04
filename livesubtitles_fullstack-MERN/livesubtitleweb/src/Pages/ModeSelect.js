@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import {useState} from 'react'
-const ManInput = ({rawData, DarkMode, User}) => {
+const ModeSelect = ({rawData, DarkMode, User}) => {
   
   const [Hover1, setHover1] = useState(false)
   const [Hover2, setHover2] = useState(false)
@@ -33,4 +33,4 @@ const ManInput = ({rawData, DarkMode, User}) => {
 }
 
 
-export default ManInput
+export default ModeSelect

@@ -18,7 +18,7 @@ const Register = ({onClick, loginDir}) => {
     console.log(password)
     console.log(fullname)
     console.log(cplevel)
-    getUsers();
+    // getUsers();
     register();
     // onClick();
   }
@@ -40,8 +40,9 @@ const Register = ({onClick, loginDir}) => {
         cplevel: cplevel
       });
       console.log(JSON.stringify(response));
-    }catch {
+    }catch (err){
         console.log("registration failed")
+        console.log(err)
     }
   }
 

@@ -12,6 +12,7 @@ const corsOptions ={ //Allows server and client to connect, otherwise will compl
         callback(new Error('Source address not allowed access'))
     }
    }, 
+   credentials: true,
    optionSuccessStatus:200,
 }
 

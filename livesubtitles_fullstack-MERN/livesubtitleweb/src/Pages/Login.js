@@ -1,19 +1,18 @@
 import React from 'react'
 import {useState} from 'react'
 import axios from '../api/axios';
-const Input = ({onClick, registerDir, setUser}) => {
+const Login = ({onClick, registerDir, setUser}) => {
 
   const LOGIN_URL= '/login';
 
   const [username , setUsername] = useState('');
   const [password , setPassword] = useState('');
-
+  let accessToken = ""
 
   const onSubmit =(e)=>{
     e.preventDefault()
     console.log(username)
     console.log(password)
-    getUsers();
     login();
   }
 
@@ -28,7 +27,11 @@ const Input = ({onClick, registerDir, setUser}) => {
       if (response.data[0]){
         setUser(username)               //To be replaced with a token system. Currently suceptible to JS hacking
         console.log("login success")
-        onClick()
+        accessToken=response.data[2]
+        console.log(accessToken)
+        getUsers(accessToken);
+      // refreshToken();
+        // onClick()
       } else{
         console.log("login failed")
       }
@@ -38,8 +41,20 @@ const Input = ({onClick, registerDir, setUser}) => {
     }
   }
 
-  const getUsers=()=>{ // Gets list of users from server. For testing connection, should be removed in release version.
-    axios.get('/users').then(res =>{
+  const getUsers= async ()=>{ // Gets list of users from server. For testing connection, should be removed in release version.
+    await axios.get('/users', {
+      headers:{
+        'authorization': `Bearer ${accessToken}`
+      }
+    }).then(res =>{
+       console.log(res.data)
+
+     })
+   }
+   const refreshToken= async ()=>{ // Gets list of users from server. For testing connection, should be removed in release version.
+    await axios.get('/refresh', {
+      withCredentials: true
+    }).then(res =>{
        console.log(res.data)
      })
    }
@@ -62,4 +77,4 @@ const Input = ({onClick, registerDir, setUser}) => {
   )
 }
 
-export default Input
+export default Login
