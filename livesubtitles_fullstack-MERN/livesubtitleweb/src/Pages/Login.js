@@ -25,13 +25,13 @@ const Login = ({onClick, registerDir, setUser}) => {
       });
       console.log(JSON.stringify(response));
       if (response.data[0]){
-        setUser(username)               //To be replaced with a token system. Currently suceptible to JS hacking
+        // setUser(username)               //To be replaced with a token system. Currently suceptible to JS hacking
         console.log("login success")
         accessToken=response.data[2]
         console.log(accessToken)
         getUsers(accessToken);
       // refreshToken();
-        // onClick()
+        onClick()
       } else{
         console.log("login failed")
       }
@@ -51,7 +51,7 @@ const Login = ({onClick, registerDir, setUser}) => {
 
      })
    }
-   const refreshToken= async ()=>{ // Gets list of users from server. For testing connection, should be removed in release version.
+   const refreshToken= async ()=>{
     await axios.get('/refresh', {
       withCredentials: true
     }).then(res =>{
