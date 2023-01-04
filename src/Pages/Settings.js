@@ -15,6 +15,16 @@ import {
 } from "../Components/styles/Theme.styled";
 import { GlobalStyles } from "../Components/styles/Global";
 
+// font theme
+function setGlobalFontFamily(fontFamily) {
+  document.body.style.fontFamily = fontFamily;
+}
+
+// font size
+function setGlobalFontSize(fontSize) {
+  document.body.style.fontSize = fontSize;
+}
+
 const Settings = () => {
   const [selectedTheme, setSelectedTheme] = useState(light);
   // function to handle user theme selection on click and save it to local storage
@@ -35,18 +45,18 @@ const Settings = () => {
         <Header>Settings</Header>
         <ThemeContainer>
           <p>Font:</p>
-          <input type="radio" name="font" checked />
+          <input type="radio" class="radio-button" name="font" checked onClick={() => setGlobalFontFamily('monospace')} />
           <p>Default</p>
-          <input type="radio" name="font" />
+          <input type="radio" class="radio-button" name="font" onClick={() => setGlobalFontFamily('Arial')} />
           <p>Better legibility</p>
         </ThemeContainer>
         <ThemeContainer>
           <p>Font size:</p>
-          <input type="radio" name="size" />
+          <input type="radio" class="radio-button" name="size" onClick={() => setGlobalFontSize('14px')}/>
           <p>Small</p>
-          <input type="radio" name="size" checked />
+          <input type="radio" class="radio-button" name="size" checked onClick={() => setGlobalFontSize('18px')}/>
           <p>Medium</p>
-          <input type="radio" name="size" />
+          <input type="radio" class="radio-button" name="size" onClick={() => setGlobalFontSize('20px')}/>
           <p>Large</p>
         </ThemeContainer>
 

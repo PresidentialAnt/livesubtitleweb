@@ -15,6 +15,7 @@ body {
   color: ${({ theme }) => theme.colors.text};
   font-family: monospace;
   overflow-x: hidden;
+  font-size: 18px;
 }
 
 // theme buttons color
@@ -41,4 +42,17 @@ body {
 .active{
     border: 3px solid ${({ theme }) => theme.colors.border};
 }
+
+// flexpad for radio buttons to design flexible responsive layout structure without using float or positioning.
+.radio-button-row {
+  display: flex;
+  align-items: center;
+}
+
+.radio-button {
+  margin: 0 10px;
+}
+
 `;
+
+
