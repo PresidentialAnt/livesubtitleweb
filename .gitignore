@@ -2,7 +2,6 @@
 
 # dependencies
 livesubtitles_fullstack-MERN/LiveSubtitleServer/node_modules
-livesubtitles_fullstack-MERN/LiveSubtitleServer/.env
 livesubtitles_fullstack-MERN/livesubtitleweb/node_modules
 /.pnp
 .pnp.js
@@ -14,6 +13,7 @@ livesubtitles_fullstack-MERN/livesubtitleweb/node_modules
 /build
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local

@@ -1,19 +1,16 @@
 const jwt = require('jsonwebtoken')
-require('dotenv').config();
+const mongoose = require('mongoose');
 
-const userDB = {
-    userlist:require('../models/accounts.json'),
-    setUsers: function (userDB) {this.userlist = userDB}
-}
+require('../models/user.model')
+const User = mongoose.model("users");
 
-const TokenRefresher = (req,res)=> { 
+const TokenRefresher = async (req,res)=> { 
     if (!req.cookies?.jwt) return res.sendStatus(401);
     token=req.cookies.jwt;
-    user = userDB.userlist.find(user => user.refreshToken === token)
+    let user = await User.findOne({ refreshToken: token })
     console.log(user)
-    let msg= [false]
-    if (user == null) {
-        msg= [false, "No such user"]
+    if (!user) {
+        return res.sendStatus(403);
      }else {
         (jwt.verify(
         token, 
@@ -25,11 +22,10 @@ const TokenRefresher = (req,res)=> {
                 process.env.ACCESS_TOKEN_SECRET,
                 {expiresIn:'30s'}
             )
-            msg= [true,"valid token",accessToken]
+            res.json({accessToken: accessToken})
         })) 
         
     }
-    res.send(msg)
 };
 
 module.exports = {TokenRefresher};

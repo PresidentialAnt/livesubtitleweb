@@ -1,26 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const path = require('path');
-const fs = require('fs');
 const jwt = require('jsonwebtoken')
-require('dotenv').config();
+const mongoose = require('mongoose');
 
-const userDB = {
-    userlist:require('../models/accounts.json'),
-    setUsers: function (userDB) {this.userlist = userDB}
-}
-async function WriteUsersToFile(){
-    await fs.promises.writeFile(
-    path.join(__dirname, '..', 'models', 'accounts.json'), 
-    JSON.stringify(userDB.userlist, null, 4))
-}
+require('../models/user.model')
+const User = mongoose.model("users");
 
-async function ClearCookies(res){
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true}) //secure: true in production
-    res.sendStatus(204)
-}
-
-const Register = async (req, res)=> { //allows addition to users array
+const Register = async (req, res)=> { //adds to mongoDB schema
     const username = req.body.username;
     const password = req.body.password;
     const fullname = req.body.fullname;
@@ -28,83 +14,66 @@ const Register = async (req, res)=> { //allows addition to users array
 
     //mis-input conditions
     if (!username || !password || !fullname || !cplevel) return res.status(400).send(['All fields must be filled in'])
-    duplicate = userDB.userlist.find(user => user.username === username)
+
+    let duplicate = await User.findOne({ username: username })
     if (duplicate) return res.status(409).send(['duplicate user']);
 
     try {
         const hashedPwd = await bcrypt.hash(password, 10);
-
-        const newUser = {
+        await User.create({
             username: username,
             password: hashedPwd,
-            unhashed_password: password, //for testing purposes, will be removed in release
             fullname: fullname,
             cplevel: cplevel,
             refreshToken: ""
-        }
-
-        userDB.setUsers([...userDB.userlist, newUser])
-        console.log(userDB.userlist)
-        WriteUsersToFile()
+        })
         res.status(201).send([`New user ${username} created!` ])
     } catch (err){
         res.status(500).json({'err': err.message})
         console.log(err.message)
     }
-    // console.log(users)
 };
 
-const Login = async (req,res)=> { //Verifies existance in user array and checks password. Not ideal
+const Login = async (req,res)=> { //Verifies existance of user in database and checks if password matches. Provides access and refresh tokens if true
     const username = req.body.username;
     const password = req.body.password;
-    user = userDB.userlist.find(user => user.username === username)
-    console.log(user)
-    let msg= [false]
-    if (user == null) {
-        msg= [false, "No such user"]
+    let user = await User.findOne({ username: username })
+    console.log(user?.password)
+    if (!user) {
+        return res.json({accessToken: "invalid"}).status(404);
      }else if (await bcrypt.compare(password, user.password)) {
         const accessToken = jwt.sign(
             {"username":username},
             process.env.ACCESS_TOKEN_SECRET,
-            {expiresIn:'1d'}
+            {expiresIn:'300s'}
         )
         const refreshToken = jwt.sign(
             {"username":username},
             process.env.REFRESH_TOKEN_SECRET,
             {expiresIn:'7d'}
         );
-        const userComplement = userDB.userlist.filter(user => user.username !== username)
-        const currentUser = {...user, refreshToken}
-        userDB.setUsers([...userComplement, currentUser]);
-        WriteUsersToFile()
+        await User.updateOne({ username: username }, { refreshToken: refreshToken })
         res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 2592000}); //30 days
-        msg= [true,"login successful",accessToken]
+        return res.json({accessToken: accessToken, validLogin : true}).status(200);
     } else {
-        msg = [false,"incorrect password"]
+        return res.json({accessToken: "invalid"}).status(401);
     }
-    res.send(msg)
 };
 
 const Logout = async (req, res)=>{
     if (!req.cookies?.jwt) return res.sendStatus(204);
     token=req.cookies.jwt;
-    user = userDB.userlist.find(user => user.refreshToken === token)
-    console.log(user)
-    let msg= [false]
-    if (user == null) {
-        ClearCookies(res)
-     }else {
-        const userComplement = userDB.userlist.filter(user => user.refreshToken !== token)
-        const currentUser = {...user, refreshToken: ''}
-        userDB.setUsers([...userComplement, currentUser]);
-        WriteUsersToFile()
-        ClearCookies(res)
-        }
+    let user = await User.findOneAndUpdate({ refreshToken: token }, { refreshToken: "" })
+    console.log(user.username)
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true})
+    res.status(200).send("Logged Out")
     }
     
 
-const getUsers = (req, res)=>{ //returns users as json
-    res.json(userDB.userlist)
+const getUsers = async (req, res)=>{ //returns users as json
+    let users = await User.find().lean()
+    console.log(users)
+    res.json(users)
 }
 
 

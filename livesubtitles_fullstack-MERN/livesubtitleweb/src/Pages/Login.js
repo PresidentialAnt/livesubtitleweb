@@ -1,14 +1,15 @@
 import React from 'react'
 import {useState} from 'react'
 import axios from '../api/axios';
+import TokenControl from '../Components/TokenControl';
+// import {accessToken, setAccessToken} from '../Components/TokenControl'
 const Login = ({onClick, registerDir, setUser}) => {
 
   const LOGIN_URL= '/login';
 
   const [username , setUsername] = useState('');
   const [password , setPassword] = useState('');
-  let accessToken = ""
-
+  let accessToken = ''
   const onSubmit =(e)=>{
     e.preventDefault()
     console.log(username)
@@ -22,20 +23,22 @@ const Login = ({onClick, registerDir, setUser}) => {
       let response = await axios.post(LOGIN_URL,{
         username: username,
         password: password
+      }, {
+        withCredentials: true
       });
       console.log(JSON.stringify(response));
-      if (response.data[0]){
+      if (response.data.accessToken!="invalid"){
         // setUser(username)               //To be replaced with a token system. Currently suceptible to JS hacking
         console.log("login success")
-        accessToken=response.data[2]
+        accessToken =response.data.accessToken
         console.log(accessToken)
         getUsers(accessToken);
       // refreshToken();
-        onClick()
+        // onClick()
       } else{
         console.log("login failed")
       }
-      return response.data[0]
+      return (response.data.accessToken!="invalid")
     }catch (err) {
         console.log("login failed")
     }
@@ -52,11 +55,19 @@ const Login = ({onClick, registerDir, setUser}) => {
      })
    }
    const refreshToken= async ()=>{
-    await axios.get('/refresh', {
+    const response = await axios.get('/refresh', {
       withCredentials: true
-    }).then(res =>{
-       console.log(res.data)
-     })
+    })
+    accessToken =response.data.accessToken
+    console.log(accessToken)
+   }
+
+
+   const logOut= async ()=>{
+    const response = await axios.get('/logout', {
+      withCredentials: true
+    })
+    console.log(response)
    }
  
 
@@ -70,6 +81,8 @@ const Login = ({onClick, registerDir, setUser}) => {
           <input className='text--input' type='password' placeholder='Password' value = {password} onChange={(e)=>setPassword(e.target.value)}/>
           <input className= 'small--button' type='submit' value='next'/>
         </form>
+        <button className= 'small--button' onClick={refreshToken}>refresh</button>
+        <button className= 'small--button' onClick={logOut}>logout</button>
         <div className='bottom_right'>
       <button className= 'small--button' onClick={registerDir}>Register</button>
       </div>
