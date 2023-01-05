@@ -24,7 +24,7 @@ function App() {
     return(tmpword)
   }
 
-  const [User, setUser]=useState('')
+  const [accessToken, setAccessToken]=useState('')
   const [Word, setWord]=useState(randomWord)
   const [DarkMode, setDarkMode]=useState(false)
   const [url, setUrl] = useState('No sound file passed in');
@@ -80,9 +80,9 @@ function App() {
       case 0:
         return <GDPRetc onClick={nextPage} />
       case 1:
-        return <Login onClick={nextPage} registerDir={registerDir} setUser={setUser}/>
+        return <Login onClick={nextPage} registerDir={registerDir} setAccessToken={setAccessToken}/>
       case 2:
-        return <ModeSelect playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage} User={User}/>;
+        return <ModeSelect playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage} accessToken={accessToken}/>;
       case 3:
         return <UrlContext.Provider value = {{url, setUrl}}><Record onClick={nextPage} Word={Word}/></UrlContext.Provider>
       case 4:

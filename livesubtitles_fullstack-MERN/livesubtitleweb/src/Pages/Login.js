@@ -3,7 +3,7 @@ import {useState} from 'react'
 import axios from '../api/axios';
 import TokenControl from '../Components/TokenControl';
 // import {accessToken, setAccessToken} from '../Components/TokenControl'
-const Login = ({onClick, registerDir, setUser}) => {
+const Login = ({onClick, registerDir, setAccessToken}) => {
 
   const LOGIN_URL= '/login';
 
@@ -28,13 +28,12 @@ const Login = ({onClick, registerDir, setUser}) => {
       });
       console.log(JSON.stringify(response));
       if (response.data.accessToken!="invalid"){
-        // setUser(username)               //To be replaced with a token system. Currently suceptible to JS hacking
         console.log("login success")
         accessToken =response.data.accessToken
         console.log(accessToken)
+        setAccessToken(accessToken)
         getUsers(accessToken);
-      // refreshToken();
-        // onClick()
+        onClick()
       } else{
         console.log("login failed")
       }
