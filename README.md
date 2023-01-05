@@ -8,5 +8,5 @@ REFRESH_TOKEN_SECRET: same as ACCESS_TOKEN_SECRET, generate a different string
 DATABASE_URI: template mongodb URI provided, replace with own.
 
 On front-end, accessToken is stored in a state in app.js, refreshToken is stored in a cookie
-
+######
 auto-token-refresh not implemented yet
