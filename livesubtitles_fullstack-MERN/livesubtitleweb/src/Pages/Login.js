@@ -1,45 +1,43 @@
-import React from 'react'
-import {useState} from 'react'
+import React, { useRef } from 'react'
 import axios from '../api/axios';
-import TokenControl from '../Components/TokenControl';
-// import {accessToken, setAccessToken} from '../Components/TokenControl'
-const Login = ({onClick, registerDir, setAccessToken}) => {
+import {useToken, useSetToken} from '../Components/UserControl';
+const Login = ({onClick, registerDir}) => {
+
+  const accessToken= useToken()
+  const setAccessToken=useSetToken()
 
   const LOGIN_URL= '/login';
 
-  const [username , setUsername] = useState('');
-  const [password , setPassword] = useState('');
-  let accessToken = ''
+  const userRef=useRef()
+  const passRef=useRef()
+  
   const onSubmit =(e)=>{
     e.preventDefault()
-    console.log(username)
-    console.log(password)
+    console.log(userRef.current.value)
+    console.log(passRef.current.value)
     login();
   }
 
   const login=async()=>{
     try{
-      console.log(JSON.stringify({username, password}))
+      console.log(JSON.stringify({username: userRef.current.value, password: passRef.current.value}))
       let response = await axios.post(LOGIN_URL,{
-        username: username,
-        password: password
+        username: userRef.current.value,
+        password: passRef.current.value
       }, {
         withCredentials: true
       });
       console.log(JSON.stringify(response));
       if (response.data.accessToken!="invalid"){
         console.log("login success")
-        accessToken =response.data.accessToken
-        console.log(accessToken)
-        setAccessToken(accessToken)
-        getUsers(accessToken);
-        onClick()
+        setAccessToken(response.data.accessToken)  
+        // onClick()
       } else{
         console.log("login failed")
       }
       return (response.data.accessToken!="invalid")
     }catch (err) {
-        console.log("login failed")
+        console.log(err)
     }
   }
 
@@ -53,16 +51,17 @@ const Login = ({onClick, registerDir, setAccessToken}) => {
 
      })
    }
-   const refreshToken= async ()=>{
+   const refreshToken = async ()=>{
     const response = await axios.get('/refresh', {
       withCredentials: true
     })
-    accessToken =response.data.accessToken
+    setAccessToken(response.data.accessToken)
     console.log(accessToken)
    }
 
 
    const logOut= async ()=>{
+    setAccessToken('')
     const response = await axios.get('/logout', {
       withCredentials: true
     })
@@ -75,13 +74,14 @@ const Login = ({onClick, registerDir, setAccessToken}) => {
         <form className='input--box' onSubmit={onSubmit}>
           <h2>Enter your details</h2>
           <label className='label'>Username</label>
-          <input className='text--input' type='text' placeholder='Username' value ={username} onChange={(e)=>setUsername(e.target.value)}/>
+          <input className='text--input' type='text' placeholder='Username' ref={userRef}/>
           <label className='label'>Password</label>
-          <input className='text--input' type='password' placeholder='Password' value = {password} onChange={(e)=>setPassword(e.target.value)}/>
+          <input className='text--input' type='password' placeholder='Password' ref = {passRef}/>
           <input className= 'small--button' type='submit' value='next'/>
         </form>
         <button className= 'small--button' onClick={refreshToken}>refresh</button>
         <button className= 'small--button' onClick={logOut}>logout</button>
+        <button className= 'small--button' onClick={getUsers}>get Users</button>
         <div className='bottom_right'>
       <button className= 'small--button' onClick={registerDir}>Register</button>
       </div>

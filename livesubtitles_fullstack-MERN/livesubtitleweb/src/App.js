@@ -1,18 +1,19 @@
 import './App.css';
 import "./styles.css";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import GDPRetc from './Pages/GDPRetc';
-import Login from './Pages/Login.js';
+import Login from './Pages/Login';
 import Register from './Pages/Register';
-import SideBar from "./Components/Burger.js";
-import ModeSelect from './Pages/ModeSelect.js';
-import Replay from './Pages/Replay.js';
-import Record from './Pages/Record.js';
-import About from './Pages/About.js';
-import Settings from './Pages/Settings.js';
+import SideBar from "./Components/Burger";
+import ModeSelect from './Pages/ModeSelect';
+import Replay from './Pages/Replay';
+import Record from './Pages/Record';
+import About from './Pages/About';
+import Settings from './Pages/Settings';
 import Thanks from './Pages/Thanks';
 import { UrlContext } from './Components/UrlContext';
+import UserProvider from './Components/UserControl';
 
 
 function App() {
@@ -23,10 +24,7 @@ function App() {
     tmpword=tmpword.charAt(0).toUpperCase() + tmpword.slice(1);
     return(tmpword)
   }
-
-  const [accessToken, setAccessToken]=useState('')
   const [Word, setWord]=useState(randomWord)
-  const [DarkMode, setDarkMode]=useState(false)
   const [url, setUrl] = useState('No sound file passed in');
   
   const [Page, setPage]=useState(0) /*  Page numbers:
@@ -40,9 +38,6 @@ function App() {
                                         8 is settings
                                         9 is about page */
                                         
-  const onClick = () => {
-    setDarkMode(prevmode => !prevmode)
-  }
 
   const nextPage = () =>{
     setPage(Page+1);
@@ -80,13 +75,17 @@ function App() {
       case 0:
         return <GDPRetc onClick={nextPage} />
       case 1:
-        return <Login onClick={nextPage} registerDir={registerDir} setAccessToken={setAccessToken}/>
+        return(
+          <UserProvider>
+            <Login onClick={nextPage} registerDir={registerDir}/>
+          </UserProvider>
+          )
       case 2:
-        return <ModeSelect playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage} accessToken={accessToken}/>;
+        return <ModeSelect word={Word} rawData={nextPage}/>;
       case 3:
         return <UrlContext.Provider value = {{url, setUrl}}><Record onClick={nextPage} Word={Word}/></UrlContext.Provider>
       case 4:
-        return <UrlContext.Provider value = {{url, setUrl}}><Replay playGame={onClick} DarkMode={DarkMode}  confirmRecording={nextPage} retakeRecording={prevPage}/></UrlContext.Provider>
+        return <UrlContext.Provider value = {{url, setUrl}}><Replay confirmRecording={nextPage} retakeRecording={prevPage}/></UrlContext.Provider>
       case 5:
         return <Thanks onClick={recordDir}/>
       case 8:
@@ -94,7 +93,7 @@ function App() {
       case 9:
         return <About/>
       case 10:
-        return <Register onClick={nextPage} loginDir= {loginDir}/>
+        return <Register onClick={loginDir} loginDir= {loginDir}/>
     }
   }
   return (

@@ -1,55 +1,45 @@
-import React from 'react'
-import { useEffect } from 'react';
+import React,  { useEffect, useState, useRef} from 'react';
 import axios from '../api/axios';
-import {useState} from 'react'
 const Register = ({onClick, loginDir}) => {
   var randomWords = require('random-words');
   
   const REGISTER_URL= '/register';
-
-  const [fullname , setFullname] = useState('');
-  const [username , setUsername] = useState('');
-  const [password , setPassword] = useState('');
-  const [cplevel, setCplevel] = useState('1');
+  const nameRef = useRef();
+  const userRef = useRef();
+  const passRef = useRef();
+  const cpRef = useRef();
 
   const onSubmit =(e)=>{
     e.preventDefault()
-    console.log(username)
-    console.log(password)
-    console.log(fullname)
-    console.log(cplevel)
-    // getUsers();
     register();
-    // onClick();
   }
 
   function UsernameGenerator(){//Generates a random username
     let word=randomWords()
     let num = Math.floor(Math.random() * 999)
     let tmp_usr = word + num.toString()
-    setUsername(tmp_usr)
+    userRef.current.value=tmp_usr
   }
 
   const register=async()=>{
     try{
-      console.log(JSON.stringify({username, password, fullname, cplevel}))
+      console.log(JSON.stringify({
+        username: userRef.current.value, 
+        password: passRef.current.value, 
+        fullname: nameRef.current.value, 
+        cplevel: cpRef.current.value}))
+
       let response = await axios.post(REGISTER_URL,{
-        username: username,
-        password: password,
-        fullname: fullname,
-        cplevel: cplevel
-      });
+        username: userRef.current.value, 
+        password: passRef.current.value, 
+        fullname: nameRef.current.value, 
+        cplevel: cpRef.current.value});
       console.log(JSON.stringify(response));
+      onClick()
     }catch (err){
         console.log("registration failed")
         console.log(err)
     }
-  }
-
-  const getUsers=()=>{ // Gets list of users from server. For testing connection, should be removed in release version.
-   axios.get('/users').then(res =>{
-      console.log(res.data)
-    })
   }
 
   useEffect(UsernameGenerator, []) //Random username generated on page load
@@ -58,14 +48,14 @@ const Register = ({onClick, loginDir}) => {
         <form className='input--box' onSubmit={onSubmit}>
           <h2>Register</h2>
           <label className='label'>Username</label>
-          <input className='text--input' type='text' placeholder='Username' value ={username} onChange={(e)=>setUsername(e.target.value)}/>
+          <input className='text--input' type='text' placeholder='Username' ref={userRef}/>
           <label className='label'>Full Name</label>
-          <input className='text--input' type='text' placeholder='Full Name' value ={fullname} onChange={(e)=>setFullname(e.target.value)}/>
+          <input className='text--input' type='text' placeholder='Full Name' ref={nameRef}/>
           <label className='label'>Password</label>
-          <input className='text--input' type='password' placeholder='Password' value = {password} onChange={(e)=>setPassword(e.target.value)}/>
+          <input className='text--input' type='password' placeholder='Password' ref={passRef}/>
           <label className='label'>CP Level</label>
-          <select className='dropdown' id = "cplevel" onChange={(e)=>setCplevel(e.target.value)}>
-            <option value ="1" selected>1</option>
+          <select className='dropdown' id = "cplevel" ref={cpRef} defaultValue="1">
+            <option value ="1">1</option>
             <option value ="2">2</option>
             <option value ="3">3</option>
             <option value ="4">4</option>

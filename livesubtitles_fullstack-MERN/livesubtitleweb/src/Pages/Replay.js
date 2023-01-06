@@ -3,7 +3,7 @@ import { UrlContext } from '../Components/UrlContext';
 import ReactPlayer from 'react-player'
 import recordingService from '../services/recording.service';
 import axios from 'axios'
-const Replay = ({confirmRecording,retakeRecording, DarkMode, Recording}) => {
+const Replay = ({confirmRecording,retakeRecording, Recording}) => {
   
   const [Hover1, setHover1] = useState(false)
   const [Hover2, setHover2] = useState(false)
@@ -41,18 +41,18 @@ const Replay = ({confirmRecording,retakeRecording, DarkMode, Recording}) => {
     setHover3(prevstate => !prevstate)
   }
   let b1style = {
-    backgroundColor: Hover1 ? (DarkMode ?"grey ":"grey") :(DarkMode ? "white" : "green"),
-    color: DarkMode ? "black" : "white",
+    backgroundColor: Hover1 ? ("grey") : ("green"),
+    color: "white",
   }
 
   let b2style = {
-    backgroundColor: Hover2 ? (DarkMode ?"grey ":"grey") :(DarkMode ? "white" : "green"),
-    color: DarkMode ? "black" : "white",
+    backgroundColor: Hover2 ? ("grey") : ("green"),
+    color: "white",
   }
 
   let b3style = {
-    backgroundColor: Hover3 ? (DarkMode ?"grey ":"grey") :(DarkMode ? "white" : "blue"),
-    color: DarkMode ? "black" : "white",
+    backgroundColor: Hover3 ? ("grey") : ("blue"),
+    color: "white",
   }
 
   return (
