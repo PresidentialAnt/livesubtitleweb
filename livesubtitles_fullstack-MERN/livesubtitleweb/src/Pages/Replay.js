@@ -70,7 +70,7 @@ const Replay = ({confirmRecording,retakeRecording, DarkMode, Recording}) => {
     <section>
         <ReactPlayer
         className='react-player'
-        url={file}
+        url={audio}
         playing={true} 
         controls = {true}/>
         <div className='options'>
