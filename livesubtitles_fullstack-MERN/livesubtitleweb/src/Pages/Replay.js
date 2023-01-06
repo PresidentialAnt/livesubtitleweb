@@ -8,17 +8,28 @@ const Replay = ({confirmRecording,retakeRecording, DarkMode, Recording}) => {
   const [Hover1, setHover1] = useState(false)
   const [Hover2, setHover2] = useState(false)
   const [Hover3, setHover3] = useState(false)
-  const url = useContext(UrlContext);
-  const file = url[Object.keys(url)[0]];
+  const context = useContext(UrlContext);
+  const audio = context[Object.keys(context)[0]];
+  // console.log(audio);
+  const url = Object.values(audio)[0];
+  const blob = Object.values(audio)[1]; // retrieved blob that hopefully can be sent to server
+  // console.log(blob);
+
+  // Save blob as a file
+  var file = new File([blob], "recording.wav");
   // console.log(file);
-  const body = ({patientID: 123, username: global.username, partURL: '/testURL.wav'}) // testing json
+
+
+  // Note: File and url should be uploaded to a file storage system
+  const body = ({therapistID: 444, patientID: 123, fullname: 'fred back at it again', audioBlob: JSON.stringify(audio),partURL: '/somewhere'}) // testing json
   const submission = (body) =>{
     recordingService.create(body)
         .then(response => {
           this.setState({
             patientID: response.data.patientID,
-            username: response.data.username,
-            partURL: response.data.partURL,
+            fullname: response.data.fullname,
+            audioBlob: response.data.audioBlob,
+            partURL: response.data.partURL
           });
           console.log(response.data);
           axios.get('/recordings').then(res =>{

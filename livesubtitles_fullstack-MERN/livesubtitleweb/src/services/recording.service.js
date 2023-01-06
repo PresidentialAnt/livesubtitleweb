@@ -1,5 +1,5 @@
 import axios from "../api/axios";
-
+// service constructed as RESTful API 
 class RecordingDataService {
   getAll() {
     return axios.get("/recordings")
@@ -11,8 +11,7 @@ class RecordingDataService {
   }
 
   create(data) {
-    return axios.post("/recordings", data)
-    .then(res => console.log(res.data));
+    return axios.post("/recordings", data);
   }
 
   update(id, data) {

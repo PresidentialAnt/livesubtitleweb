@@ -1,12 +1,29 @@
 # Docker commands cheat sheet
 ## Basic Compose
-Start it up
+Start it 
 ### `docker compose up`
 Check it
 ### `docker ps`
 Kill it
 ### `docker compose down`
-
+Permission Error? Running on an officially supported linux kernel? (Deb/Ubuntu/OpenSUSE/Arch)
+Go to the top of the directory and
+### `sudo aa-remove-unkown`
+As precaution, only do this after the error occurs otherwise you may delete apparmor profile globally
+If you do, sudo:
+```sh
+rm -rf /etc/apparmor*
+apt-get install apparmor --reinstall
+service apparmor restart
+service docker restart
+```
+or
+### `apparmor_parser -r -W etc/init.d/docker.profile`
+to write your own profile. This may not work on new docker versions, as they don't explicityly store this file anymore.
+If you don't want to write your own profile and have little regard for the safety of your pc:
+Append the
+### `--security-opt apparmor=unconfined`
+flag to every instance in which you run/compose a docker container.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
