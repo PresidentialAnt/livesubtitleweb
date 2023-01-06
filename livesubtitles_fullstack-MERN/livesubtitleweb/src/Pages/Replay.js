@@ -21,7 +21,7 @@ const Replay = ({confirmRecording,retakeRecording, DarkMode, Recording}) => {
 
 
   // Note: File and url should be uploaded to a file storage system
-  const body = ({therapistID: 444, patientID: 123, fullname: 'fred back at it again', audioBlob: JSON.stringify(audio),partURL: '/somewhere'}) // testing json
+  const body = ({therapistID: 444, patientID: 123, fullname: 'fred back at it again', audioBlob: JSON.stringify(audio),partURL: url}) // testing json
   const submission = (body) =>{
     recordingService.create(body)
         .then(response => {

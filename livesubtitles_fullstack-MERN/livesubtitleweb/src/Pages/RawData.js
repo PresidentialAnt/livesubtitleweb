@@ -10,7 +10,7 @@ const RawData = () => {
     <body>
       <ReactMediaRecorder
         audio
-        // blobPropertyBag={'audio/wav'}
+        blobPropertyBag={'audio/wav'}
         render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
           <div>
            <Word_generator word = {x}></Word_generator>

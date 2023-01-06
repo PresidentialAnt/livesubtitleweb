@@ -11,7 +11,8 @@ class RecordingDataService {
   }
 
   create(data) {
-    return axios.post("/recordings", data);
+    return axios.post("/recordings", data)
+    .then(res => console.log(res.data));
   }
 
   update(id, data) {

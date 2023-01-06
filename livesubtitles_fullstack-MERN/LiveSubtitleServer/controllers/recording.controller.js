@@ -15,6 +15,7 @@ const create = async (req, res) => {
     therapistID: req.body.therapistID,
     patientID: req.body.patientID,
     fullname: req.body.fullname,
+    audioBlob: req.body.audioBlob,
     partURL: req.body.partURL
   });
   // Save recording in the database
