@@ -7,6 +7,7 @@ const recordingSchema = new Schema({
   fullname: { type: String, required: false },
   partURL: { type: String, required: true },
   audioBlob: { type: String, required: true },
+  word: { type: String, required: true },
 },{
   collection: 'recordings'
 });

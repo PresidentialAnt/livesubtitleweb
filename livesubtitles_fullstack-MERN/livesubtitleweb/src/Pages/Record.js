@@ -31,7 +31,7 @@ return (
   <section>
 <ReactMediaRecorder
       audio
-      onStop={(mediaBlobUrl => {setUrl(mediaBlobUrl)} )}
+      onStop={(mediaBlobUrl => {setUrl({url: mediaBlobUrl, word: Word})} )} // Save the audio and the word into an object to pass into replay.js
       render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
         <div>
          <Word_generator word = {Word}></Word_generator>
