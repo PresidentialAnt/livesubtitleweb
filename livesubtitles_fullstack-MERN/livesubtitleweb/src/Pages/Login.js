@@ -31,7 +31,7 @@ const Login = ({onClick, registerDir}) => {
       if (response.data.accessToken!="invalid"){
         console.log("login success")
         setAccessToken(response.data.accessToken)  
-        // onClick()
+        onClick()
       } else{
         console.log("login failed")
       }

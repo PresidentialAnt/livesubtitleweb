@@ -38,7 +38,6 @@ const Login = async (req,res)=> { //Verifies existance of user in database and c
     const username = req.body.username;
     const password = req.body.password;
     let user = await User.findOne({ username: username })
-    console.log(user?.password)
     if (!user) {
         return res.json({accessToken: "invalid"}).status(404);
      }else if (await bcrypt.compare(password, user.password)) {
@@ -54,7 +53,7 @@ const Login = async (req,res)=> { //Verifies existance of user in database and c
         );
         await User.updateOne({ username: username }, { refreshToken: refreshToken })
         res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 2592000}); //30 days
-        return res.json({accessToken: accessToken, validLogin : true}).status(200);
+        return res.json({accessToken: accessToken}).status(200);
     } else {
         return res.json({accessToken: "invalid"}).status(401);
     }
@@ -63,8 +62,7 @@ const Login = async (req,res)=> { //Verifies existance of user in database and c
 const Logout = async (req, res)=>{
     if (!req.cookies?.jwt) return res.sendStatus(204);
     token=req.cookies.jwt;
-    let user = await User.findOneAndUpdate({ refreshToken: token }, { refreshToken: "" })
-    console.log(user.username)
+    await User.updateOne({ refreshToken: token }, { refreshToken: "" })
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true})
     res.status(200).send("Logged Out")
     }
@@ -72,7 +70,6 @@ const Logout = async (req, res)=>{
 
 const getUsers = async (req, res)=>{ //returns users as json
     let users = await User.find().lean()
-    console.log(users)
     res.json(users)
 }
 
