@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player'
 import recordingService from '../services/recording.service';
 import {TokenContext} from '../Components/UserControl';
 import axios from '../api/axios'
+import {default as axiosDef} from 'axios' 
 const Replay = ({confirmRecording,retakeRecording, Recording}) => {
   
   const {accessToken, setAccessToken}= useContext(TokenContext)
@@ -24,42 +25,33 @@ const Replay = ({confirmRecording,retakeRecording, Recording}) => {
 
 
   // Note: File and url should be uploaded to a file storage system
-  const body = ({audioBlob: audio, partURL: "SomeURL", word: word}) // testing json
-  const submission = (body) =>{
+  let body = ({audioBlob: audio, partURL: "SomeURL", word: word}) // testing json
+  const submission = async (body) =>{
     console.log(accessToken)
-    recordingService.create(body, accessToken)
-        // .then(response => {
-        //   this.setState({
-        //     patientID: response.data.patientID,
-        //     fullname: response.data.fullname,
-        //     audioBlob: response.data.audioBlob,
-        //     partURL: response.data.partURL,
-        //     word: response.data.word,
-        //   });
-        //   console.log(response.data);
-        //   axios.get('/recordings').then(res =>{
-        //     console.log(res.data)
-        //   })
-        //   confirmRecording();
-        // })
-        // .catch(e => {
-        //   console.log(e);
-        // })
-        ;
+    /* Reference 2 - taken from https://stackoverflow.com/a/48642305*/
+    await axiosDef({
+      method: 'get',
+      url: audio,
+      responseType: 'blob'
+  }).then((response)=>{
+    console.log(response)
+     var reader = new FileReader();
+     reader.readAsDataURL(response.data); 
+     reader.onloadend = function() {
+         var base64data = reader.result;
+         /* end of reference 2 */
+         body.audioBlob = base64data
+         recordingService.create(body, accessToken)
+     }
+  });
         
       }
-  const toggleHoverb1 = ()=>{
-    setHover1(prevstate => !prevstate)
-  }
+
   const toggleHoverb2 = ()=>{
     setHover2(prevstate => !prevstate)
   }
   const toggleHoverb3 = ()=>{
     setHover3(prevstate => !prevstate)
-  }
-  let b1style = {
-    backgroundColor: Hover1 ? ("grey") : ("green"),
-    color: "white",
   }
 
   let b2style = {
@@ -92,6 +84,24 @@ const Replay = ({confirmRecording,retakeRecording, Recording}) => {
     console.log(accessToken)
    }
 
+
+const UrltoBlob= async()=>{
+   await axiosDef({
+    method: 'get',
+    url: audio, // blob url eg. blob:http://127.0.0.1:8000/e89c5d87-a634-4540-974c-30dc476825cc
+    responseType: 'blob'
+}).then((response)=>{
+  console.log(response)
+     var reader = new FileReader();
+     reader.readAsDataURL(response.data); 
+     reader.onloadend = function() {
+         var base64data = reader.result;
+         console.log(String(base64data))
+        //  self.props.onMainImageDrop(base64data)
+     }
+
+})
+}
   return (
     <section>
         <ReactPlayer
@@ -103,6 +113,7 @@ const Replay = ({confirmRecording,retakeRecording, Recording}) => {
           <button className='small--button' onClick={retakeRecording} style={b3style} onMouseEnter={toggleHoverb3} onMouseLeave={toggleHoverb3}>re-take recording</button>
           <button className='small--button' onClick={() => {submission(body);console.log(accessToken)}} style={b2style} onMouseEnter={toggleHoverb2} onMouseLeave={toggleHoverb2}>Confirm recording</button>
           <button className= 'small--button' onClick={getUsers}>get Users</button>
+          <button className= 'small--button' onClick={UrltoBlob}>blobbify</button>
           <button className= 'small--button' onClick={refreshToken}>refresh</button>
         </div>
     </section>
