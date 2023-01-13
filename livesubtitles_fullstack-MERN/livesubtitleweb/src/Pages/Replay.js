@@ -25,17 +25,17 @@ const Replay = ({confirmRecording,retakeRecording, DarkMode, Recording}) => {
   const submission = (body) =>{
     recordingService.create(body)
         .then(response => {
-          this.setState({
-            patientID: response.data.patientID,
-            fullname: response.data.fullname,
-            audioBlob: response.data.audioBlob,
-            partURL: response.data.partURL,
-            word: response.data.word,
-          });
-          console.log(response.data);
-          axios.get('/recordings').then(res =>{
-            console.log(res.data)
-          })
+        //   this.setState({
+        //     patientID: response.data.patientID,
+        //     fullname: response.data.fullname,
+        //     audioBlob: response.data.audioBlob,
+        //     partURL: response.data.partURL,
+        //     word: response.data.word,
+        //   });
+        //   console.log(response.data);
+        //   axios.get('/recordings').then(res =>{
+        //     console.log(res.data)
+        //   })
           confirmRecording();
         })
         .catch(e => {
