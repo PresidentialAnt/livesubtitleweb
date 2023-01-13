@@ -1,9 +1,13 @@
 import React from 'react'
-import {useState} from 'react'
+import {useRef} from 'react'
 const GDPRetc = ({onClick}) => {
+  const checkRef=useRef()
   const onSubmit =(e)=>{
     e.preventDefault()
-    onClick(e)
+    if(checkRef.current.checked){
+      onClick()
+    }
+    
   }
   return (
     <section className='gdpr_section'>
@@ -22,7 +26,7 @@ Nam at nisi vel orci convallis sollicitudin nec porttitor augue. Nulla sit amet 
 
         <div className='confirmation'>
             <label className='label'>I understand and consent</label>
-            <input className='text--input' type='checkbox'/>
+            <input className='text--input' type='checkbox' ref={checkRef}/>
 
         </div>
         
