@@ -1,30 +1,54 @@
 import axios from "../api/axios";
 // service constructed as RESTful API 
 class RecordingDataService {
-  getAll() {
-    return axios.get("/recordings")
+  getAll(accessToken) {
+    return axios.get("/recordings", {
+      headers:{
+        'authorization': `Bearer ${accessToken}`
+      }
+    })
     .then(res => console.log(res));
   }
 
-  get(id) {
-    return axios.get(`/recordings/${id}`);
+  get(id, accessToken) {
+    return axios.get(`/recordings/${id}`, {
+      headers:{
+        'authorization': `Bearer ${accessToken}`
+      }
+    });
   }
 
-  create(data) {
-    return axios.post("/recordings", data)
+  create(data, accessToken) {
+    return axios.post("/recordings", data, {
+      headers:{
+        'authorization': `Bearer ${accessToken}`
+      }
+    })
     .then(res => console.log(res.data));
   }
 
-  update(id, data) {
-    return axios.put(`/recordings/${id}`, data);
+  update(id, data, accessToken) {
+    return axios.put(`/recordings/${id}`, data, {
+      headers:{
+        'authorization': `Bearer ${accessToken}`
+      }
+    });
   }
 
-  delete(id) {
-    return axios.delete(`/recordings/${id}`);
+  delete(id, accessToken) {
+    return axios.delete(`/recordings/${id}`, {
+      headers:{
+        'authorization': `Bearer ${accessToken}`
+      }
+    });
   }
 
-  deleteAll() {
-    return axios.delete(`/recordings`);
+  deleteAll(accessToken) {
+    return axios.delete(`/recordings`, {
+      headers:{
+        'authorization': `Bearer ${accessToken}`
+      }
+    });
   }
 }
 

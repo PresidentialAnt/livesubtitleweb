@@ -8,7 +8,6 @@ const TokenRefresher = async (req,res)=> {
     if (!req.cookies?.jwt) return res.sendStatus(401);
     token=req.cookies.jwt;
     let user = await User.findOne({ refreshToken: token })
-    console.log(user)
     if (!user) {
         return res.sendStatus(403);
      }else {

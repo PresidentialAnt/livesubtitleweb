@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import {useState} from 'react'
-const ModeSelect = ({rawData, DarkMode, User}) => {
+const ModeSelect = ({rawData, User}) => {
   
   const [Hover1, setHover1] = useState(false)
   const [Hover2, setHover2] = useState(false)
@@ -15,13 +15,13 @@ const ModeSelect = ({rawData, DarkMode, User}) => {
   }
 
   let b1style = {
-    backgroundColor: Hover1 ? (DarkMode ?"grey ":"grey") :(DarkMode ? "white" : "red"),
-    color: DarkMode ? "black" : "white",
+    backgroundColor: Hover1 ? ("grey") :("red"),
+    color: "white",
   }
 
   let b2style = {
-    backgroundColor: Hover2 ? (DarkMode ?"grey ":"grey") :(DarkMode ? "white" : "green"),
-    color: DarkMode ? "black" : "white",
+    backgroundColor: Hover2 ? ("grey") :("green"),
+    color: "white",
   }
   return (
     <section>

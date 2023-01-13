@@ -1,4 +1,3 @@
-import './App.css';
 import "./styles.css";
 import { useEffect, useState } from 'react';
 
@@ -13,6 +12,7 @@ import About from './Pages/About.js';
 import Settings from './Pages/Settings.js';
 import Thanks from './Pages/Thanks';
 import { UrlContext } from './Components/UrlContext';
+import UserProvider from './Components/UserControl';
 
 
 function App() {
@@ -24,9 +24,7 @@ function App() {
     return(tmpword)
   }
 
-  const [accessToken, setAccessToken]=useState('')
   const [Word, setWord]=useState(randomWord)
-  const [DarkMode, setDarkMode]=useState(false)
   const [url, setUrl] = useState('No sound file passed in');
   
   const [Page, setPage]=useState(0) /*  Page numbers:
@@ -40,9 +38,6 @@ function App() {
                                         8 is settings
                                         9 is about page */
                                         
-  const onClick = () => {
-    setDarkMode(prevmode => !prevmode)
-  }
 
   const nextPage = () =>{
     setPage(Page+1);
@@ -80,13 +75,13 @@ function App() {
       case 0:
         return <GDPRetc onClick={nextPage} />
       case 1:
-        return <Login onClick={nextPage} registerDir={registerDir} setAccessToken={setAccessToken}/>
+        return <Login onClick={nextPage} registerDir={registerDir}/>
       case 2:
-        return <ModeSelect playGame={onClick} DarkMode={DarkMode} word={Word} rawData={nextPage} accessToken={accessToken}/>;
+        return <ModeSelect word={Word} rawData={nextPage}/>;
       case 3:
         return <UrlContext.Provider value = {{url, setUrl}}><Record onClick={nextPage} Word={Word}/></UrlContext.Provider>
       case 4:
-        return <UrlContext.Provider value = {{url, setUrl}}><Replay playGame={onClick} DarkMode={DarkMode}  confirmRecording={nextPage} retakeRecording={prevPage}/></UrlContext.Provider>
+        return <UrlContext.Provider value = {{url, setUrl}}><Replay confirmRecording={nextPage} retakeRecording={prevPage}/></UrlContext.Provider>
       case 5:
         return <Thanks onClick={recordDir}/>
       case 8:
@@ -102,7 +97,9 @@ function App() {
       <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} aboutDir={aboutDir} settingsDir={settingsDir}/>
 
       <main id="page-wrap">
+      <UserProvider>
         {PageSelect(Page)}
+        </UserProvider>
         
       </main>
 

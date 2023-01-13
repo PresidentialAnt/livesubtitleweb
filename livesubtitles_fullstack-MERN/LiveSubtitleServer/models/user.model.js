@@ -5,6 +5,7 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   fullname: { type: String, required: true},
   cplevel: { type: Number, required: true},
+  therapistID: { type: Number, required: false },
   refreshToken: { type: String, required: false}
 },{
   collection: 'users'

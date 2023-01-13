@@ -1,10 +1,14 @@
 import { createContext, useState } from "react";
 
-// const tokenContext = createContext({});
+export const TokenContext = createContext();
 
-export const UserControl = () => {
-    const [accessToken, setAccessToken]=useState();
-    return [accessToken, setAccessToken]
+export function UserProvider({children}){
+    const [accessToken, setAccessToken]=useState('tbd');
+    return(
+        <TokenContext.Provider value={{accessToken, setAccessToken}}>
+                {children}
+        </TokenContext.Provider>
+        
+    )
 }
-
-export default UserControl;
+export default UserProvider;
