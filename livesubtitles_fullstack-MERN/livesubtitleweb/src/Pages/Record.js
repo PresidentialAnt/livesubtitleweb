@@ -55,7 +55,7 @@ function Record({ onClick, Word }) {
     marginTop: 70,
     fontSize: fontsize,
   };
-
+/* Reference - taken from https://www.npmjs.com/package/react-media-recorder*/
   return (
     <ThemeProvider theme={selectedTheme}>
       <section>
@@ -99,4 +99,4 @@ function Record({ onClick, Word }) {
 }
 export default Record;
 
-// Code based on the documentation provided for the react-media-recorder library at https://www.npmjs.com/package/react-media-recorder
+/* End of reference */
