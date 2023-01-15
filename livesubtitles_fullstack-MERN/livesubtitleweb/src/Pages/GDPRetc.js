@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from 'universal-cookie';
 import { useState, useEffect, useRef } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../Components/styles/Global";
@@ -18,6 +19,7 @@ const GDPRetc = ({ onClick }) => {
     console.log('') // For unit testing
     e.preventDefault();
     if (checkRef.current.checked) {
+      cookies.set('GDPRAccepted', true, { path: '/' });
       onClick();
     }
   };
@@ -28,8 +30,11 @@ const GDPRetc = ({ onClick }) => {
   const [fontsize, setFontSize] = useState(
     localStorage.getItem("fontsize") || "18px"
   );
-
+  const cookies = new Cookies();
   useEffect(() => {
+    if (cookies.get('GDPRAccepted')){
+      onClick();
+    }
     const currentTheme = JSON.parse(localStorage.getItem("current-theme"));
     if (currentTheme) {
       setSelectedTheme(currentTheme);
