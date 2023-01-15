@@ -37,11 +37,12 @@ describe("Models and Schema", ()=> {
             
         })
         test("should fail with not enough fields", async () =>{
-            let invalidRec = [{
+            // should recieve validation error since required field is undefined
+            let invalidRec = {
                 partUrl: "http://parturl",
                 audioBlob: "base64",
                 word:"test"
-            }]
+            }
             try{
                 const testRec = Recording(invalidRec);
                 await testRec.save();
@@ -52,8 +53,44 @@ describe("Models and Schema", ()=> {
 
     })
     describe("User", ()=>{
-        test("should respond with ",()=>{
-            expect(true).toBe(true)
+        //should contain all relevant fields: token, parturl, blob 
+        test("should succeed",async ()=>{
+            let validUser = {
+                username: "FredTestsJS",
+                password: "BIGHASHEDPWD1234",
+                fullname: "Fred McDev",
+                cplevel: 4,
+                therapistID: 123,
+                refreshToken: "refreshToken"
+                }
+            const testUser = new User(validUser);
+            await testUser.save();
+            expect(testUser._id).toBeDefined();
+            expect(testUser.username).toBe(validUser.username);
+            expect(testUser.password).toBe(validUser.password);
+            expect(testUser.cplevel).toBe(validUser.cplevel);
+            expect(testUser.fullname).toBe(validUser.fullname);
+            expect(testUser.therapistID).toBe(validUser.therapistID);
+            expect(testUser.refreshToken).toBe(validUser.refreshToken);
+
+
+            
+        })
+        test("should fail with not enough fields", async () =>{
+            // should recieve validation error since required field is undefined
+            let invalidUser = {
+                password: "BIGHASHEDPWD1234",
+                fullname: "Fred McDev",
+                cplevel: "notanumber",
+                therapistID: 123,
+                refreshToken: "refreshToken"
+                }
+            try{
+                const testUser = User(invalidUser);
+                await testUser.save();
+            }catch(error) {
+                expect(error).toBeInstanceOf(mongoose.Error.ValidationError);
+            }
         })
     })
 })
