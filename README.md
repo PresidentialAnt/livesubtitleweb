@@ -9,3 +9,4 @@ On front-end, accessToken is stored in a state in app.js, refreshToken is stored
 
 ## For Us
 auto-token-refresh not implemented yet
+Final Docker compatibility, after this commit it can no longer be deployed via containers due to further routing issues and no compatible daemon images
