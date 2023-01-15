@@ -142,7 +142,7 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
           data-testid = 'audio_player'
           className="react-player"
           url={audio}
-          playing={true}
+          playing={false}
           controls={true}
         />
         <div className="options">
