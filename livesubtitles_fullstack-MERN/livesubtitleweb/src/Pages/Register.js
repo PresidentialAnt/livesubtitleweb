@@ -104,7 +104,7 @@ const Register = ({ onClick, loginDir }) => {
             placeholder="Password"
             ref={passRef}
           />
-          <label className="label">CP Level</label>
+          <label className="label">GMFCS Level</label>
           <select
             className="dropdown"
             id="cplevel"

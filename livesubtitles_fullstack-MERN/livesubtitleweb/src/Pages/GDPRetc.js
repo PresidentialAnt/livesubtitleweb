@@ -51,65 +51,154 @@ const GDPRetc = ({ onClick }) => {
       <ThemeProvider theme={selectedTheme}>
         <form className="input--box" onSubmit={onSubmit}>
           <GlobalStyles font={font} fontsize={fontsize} />
-          <h2>GDPR</h2>
+          <h2>The Cerebral Palsy Speech Collection Tool Privacy Policy</h2>
           <ThemeContainer>
             <p className="GDPR">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              scelerisque sit amet elit non porttitor. Phasellus in enim
-              rhoncus, luctus sapien eu, sodales nunc. Suspendisse potenti.
-              Curabitur euismod libero lorem, viverra pretium risus rhoncus et.
-              Aenean ultrices nec erat at scelerisque. Etiam accumsan neque ac
-              ipsum scelerisque rutrum. Quisque sed diam faucibus, commodo
-              tellus id, iaculis nunc. Vestibulum ac vehicula lacus, non
-              lobortis nibh. Ut rutrum pellentesque augue nec consectetur. Sed
-              eget odio mauris. Praesent imperdiet ante sit amet lacus finibus,
-              eu scelerisque erat rutrum. Nunc ac libero est. Pellentesque
-              scelerisque mauris scelerisque lobortis varius. Mauris finibus
-              hendrerit ex eget rhoncus. Pellentesque habitant morbi tristique
-              senectus et netus et malesuada fames ac turpis egestas. Donec
-              scelerisque nulla libero, eget tincidunt nunc placerat sed.
-              Aliquam aliquet mi in erat rutrum rhoncus. Mauris facilisis, risus
-              euismod luctus rhoncus, lacus lacus condimentum nisl, sit amet
-              dictum lacus tellus at mi. Morbi auctor vulputate neque, eu
-              iaculis leo eleifend eget. Ut tincidunt id sapien vitae rhoncus.
-              Donec eget tempor turpis. Vivamus congue justo a lorem efficitur
-              dictum sed sit amet eros. Donec molestie luctus rutrum. Nulla eget
-              tempor augue, eget aliquet dolor. Vestibulum fermentum nisl nulla,
-              et ultrices ipsum placerat sit amet. Maecenas in felis vehicula,
-              fringilla arcu condimentum, maximus leo. Quisque consectetur
-              malesuada nunc et vestibulum. Aliquam aliquam dolor at laoreet
-              molestie. Pellentesque congue non felis ut laoreet. Sed pretium
-              vehicula consectetur. Duis lacinia elit nulla. Sed efficitur
-              auctor nunc sit amet tincidunt. Vestibulum nec facilisis metus.
-              Etiam in venenatis nibh. Sed condimentum ac velit sed pulvinar.
-              Aliquam congue hendrerit velit non tempus. Duis tellus tortor,
-              ullamcorper at tortor non, luctus accumsan ipsum. Quisque in
-              laoreet purus. Donec diam nibh, finibus vitae mollis sit amet,
-              tristique quis elit. Aenean interdum dolor augue, eget gravida
-              augue pellentesque a. Nulla at augue ante. Suspendisse aliquam
-              orci ac dignissim porttitor. Donec hendrerit magna eget diam
-              viverra tempor quis vitae arcu. Proin fermentum egestas diam, a
-              vestibulum quam condimentum non. Aliquam consectetur feugiat
-              ligula ut vestibulum. Pellentesque cursus enim felis, sit amet
-              condimentum sem tempor eu. Duis et condimentum ante, ut dignissim
-              ex. Phasellus in cursus eros. Nunc vel purus ac odio posuere
-              mollis at sed elit. Vestibulum nisi orci, ullamcorper vel
-              fermentum eget, tempor ac odio. Integer vulputate erat vel congue
-              posuere. Sed placerat nunc sit amet odio scelerisque, sit amet
-              venenatis ante viverra. Praesent eu ornare nulla. Nam at nisi vel
-              orci convallis sollicitudin nec porttitor augue. Nulla sit amet
-              arcu neque. Vivamus rutrum orci massa, in auctor urna semper ac.
-              Donec laoreet ipsum eget laoreet elementum. Aliquam lobortis dolor
-              nec gravida imperdiet. In feugiat vitae turpis sit amet elementum.
-              Nunc tincidunt nisl a sem bibendum scelerisque. Cras eget
-              facilisis nibh. Nulla suscipit ut nisi sed molestie. Mauris porta,
-              enim ut dictum scelerisque, tortor lacus ullamcorper massa, nec
-              laoreet purus odio eu orci. Quisque non turpis turpis. Maecenas
-              sed mi a urna luctus porta quis ac mi. Vivamus fringilla tortor
-              non massa egestas, quis iaculis nulla malesuada. Pellentesque eget
-              odio volutpat, eleifend est at, cursus neque. Pellentesque iaculis
-              facilisis massa, in rutrum risus tincidunt id. Nullam vehicula
-              tellus eget velit porta consectetur.
+              The Cerebral Palsy Speech Collection Tool is part of INSERT MAIN ORGANISATION. This privacy policy will explain how our organization uses the personal data we collect from you when you use our website.
+              <br></br>
+              <br></br>
+              <b>Topics:</b>
+              <ul>
+                <li>What data do we collect?</li>
+                <li>How do we collect your data?</li>
+                <li>How will we use your data?</li>
+                <li>How do we store your data?</li>
+                <li>What are your data protection rights?</li>
+                <li>What are cookies?</li>
+                <li>How do we use cookies?</li>
+                <li>What types of cookies do we use?</li>
+                <li>How to manage your cookies</li>
+                <li>Privacy policies of other websites</li>
+                <li>Changes to our privacy policy</li>
+                <li>How to contact us</li>
+                <li>How to contact the appropriate authorities</li>
+              </ul>
+              <br></br>
+              <h3>
+              What data do we collect?
+              </h3>
+              The Cerebral Palsy Speech Collection Tool collects the following data:
+              <br></br>
+              <br></br>
+              <ul>
+                <li>Personal identification information (Name, Gross Motor Function Classification System Level)</li>
+                </ul>
+              <br></br>
+              <br></br>
+              <h3>How do we collect your data?</h3>
+              You directly provide The Cerebral Palsy Speech Collection Tool with all of the data we collect. We collect data and process data when you register online or place an order for any of our products or services.
+              <br></br>
+              <br></br>
+              <h3>How will we use your data?</h3>
+              The Cerebral Palsy Speech Collection Tool collects your data so that we can:
+              <br></br>
+              <br></br>
+              <ul>
+                <li>Process and manage your account.</li>
+                <li>Provide your submitted recordings to your speech therapist.</li>
+                <li>Train a live subtitling model for the speech of individuals with cerebral palsy.</li>
+              </ul>
+              <br></br>
+              If you agree, The Cerebral Palsy Speech Collection Tool will share your data with our partner companies below so that they may offer you their products and services.
+              <br></br>
+              <br></br>
+              <ul>
+                <li>The Pace Centre</li>
+                <li>INSERT ANY OTHER PARTNER COMPANIES</li>
+              </ul>
+              <br></br>
+              <h3>How do we store your data?</h3>
+              The Cerebral Palsy Speech Collection Tool securely stores your data in a MongoDB Cluster.
+
+              The Cerebral Palsy Speech Collection Tool will keep your data indefinitely, or until you request its removal. 
+
+              <br></br>
+              <br></br>
+              <h3>What are your data protection rights?</h3>
+              The Cerebral Palsy Speech Collection Tool would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:
+              <br></br>
+              <br></br>
+              <ul>
+                <li>The right to access – You have the right to request The Cerebral Palsy Speech Collection Tool for copies of your personal data.</li>
+                
+                <li>The right to rectification – You have the right to request that The Cerebral Palsy Speech Collection Tool correct any information you believe is inaccurate. You also have the right to request The Cerebral Palsy Speech Collection Tool to complete the information you believe is incomplete.</li>
+                
+                <li>The right to erasure – You have the right to request that The Cerebral Palsy Speech Collection Tool erase your personal data.</li>
+                
+                <li>The right to restrict processing – You have the right to request that The Cerebral Palsy Speech Collection Tool restrict the processing of your personal data.</li>
+                
+                <li>The right to object to processing – You have the right to object to The Cerebral Palsy Speech Collection Tool’s processing of your personal data.</li>
+                
+                <li>The right to data portability – You have the right to request that The Cerebral Palsy Speech Collection Tool transfer the data that we have collected to another organization, or directly to you.</li>
+              </ul>
+              <br></br>
+              If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us at our email: INSERT EMAIL
+              <br></br>
+              <br></br>
+              Call us at: INSERT PHONE NUMBER
+              <br></br>
+              <br></br>
+              Or write to us: INSERT ADDRESS
+              <br></br>
+              <br></br>
+              <h3>Cookies</h3>
+              Cookies are text files placed on your computer to collect standard Internet log information and visitor behavior information. When you visit our websites, we may collect information from you automatically through cookies or similar technology
+
+              For further information, visit allaboutcookies.org.
+              <br></br>
+              <br></br>
+              <h3>How do we use cookies?</h3>
+              The Cerebral Palsy Speech Collection Tool uses cookies in a range of ways to improve your experience on our website, including:
+              <br></br>
+              <br></br>
+              <ul>
+                <li>Keeping you signed in</li>
+                <li>Skipping some information pages you will have already seen</li>
+              </ul>
+              <br></br>
+              <h3>What types of cookies do we use?</h3>
+              There are a number of different types of cookies, however, our website uses:
+              <br></br>
+              <br></br>
+              <ul>
+                <li>Functionality – The Cerebral Palsy Speech Collection Tool uses these cookies so that we recognize you on our website and remember your previously selected preferences. These could include what fonts you prefer, or what user account is logged in.</li>
+              </ul>
+              <br></br>
+              <h3>How to manage cookies</h3>
+              You can set your browser not to accept cookies, and the above website tells you how to remove cookies from your browser. However, in a few cases, some of our website features may not function as a result.
+              <br></br>
+              <br></br>
+              <h3>Privacy policies of other websites</h3>
+              The The Cerebral Palsy Speech Collection Tool website contains links to other websites. Our privacy policy applies only to our website, so if you click on a link to another website, you should read their privacy policy.
+              <br></br>
+              <br></br>
+              <h3>Changes to our privacy policy</h3>
+              The Cerebral Palsy Speech Collection Tool keeps its privacy policy under regular review and places any updates on this web page. This privacy policy was last updated on 15 January 2023.
+              <br></br>
+              <br></br>
+              <h3>How to contact us</h3>
+              If you have any questions about The Cerebral Palsy Speech Collection Tool’s privacy policy, the data we hold on you, or you would like to exercise one of your data protection rights, please do not hesitate to contact us.
+              <br></br>
+              <br></br>
+              Email us at: INSERT EMAIL
+              <br></br>
+              <br></br>
+              Call us: INSERT PHONE NUMBER
+              <br></br>
+              <br></br>
+              Or write to us at: INSERT ADDRESS
+              <br></br>
+              <br></br>
+              <h3>How to contact the appropriate authority</h3>
+              Should you wish to report a complaint or if you feel that The Cerebral Palsy Speech Collection Tool has not addressed your concern in a satisfactory manner, you may contact the Information Commissioner’s Office.
+              <br></br>
+              <br></br>
+              Email: INSERT EMAIL
+              <br></br>
+              <br></br>
+              Address: INSERT ADDRESS
+              <br></br>
+              <br></br>
             </p>
           </ThemeContainer>
 

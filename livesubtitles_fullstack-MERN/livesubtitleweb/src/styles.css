@@ -93,6 +93,9 @@ section{
   padding-block: 5vh;
 }
 
+li{
+  margin: 7px 0;
+}
 section > button {
   border-radius: 20px;
   margin: 5px;
