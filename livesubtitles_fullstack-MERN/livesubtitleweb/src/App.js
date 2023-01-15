@@ -18,7 +18,7 @@ import UserProvider from './Components/UserControl';
 function App() {
   var randomWords = require('random-words');
   
-  function randomWord(){
+  function randomWord(){ //Generate a random word with the first letter capitalised
     let tmpword=randomWords();
     tmpword=tmpword.charAt(0).toUpperCase() + tmpword.slice(1);
     return(tmpword)
@@ -34,7 +34,6 @@ function App() {
                                         3 is raw entry
                                         4 is audio confirmation
                                         5 is thank you page
-                                        6 is game
                                         8 is settings
                                         9 is about page */
                                         
@@ -99,7 +98,7 @@ function App() {
       <main id="page-wrap">
       <UserProvider>
         {PageSelect(Page)}
-        </UserProvider>
+      </UserProvider>
         
       </main>
 
