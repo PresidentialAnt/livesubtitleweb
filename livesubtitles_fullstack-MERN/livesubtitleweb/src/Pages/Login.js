@@ -88,8 +88,8 @@ const Login = ({onClick, registerDir}) => {
           <input className='text--input' type='password' placeholder='Password' ref = {passRef}/>
           <input className= 'small--button' type='submit' value='next'/>
         </form>
-        <button className= 'small--button' onClick={refreshToken}>refresh</button>
-        <button className= 'small--button' onClick={logOut}>logout</button>
+        <button className= 'small--button' onClick={refreshToken} data-testid='refresh'>refresh</button>
+        <button className= 'small--button' onClick={logOut} data-testid="logout">logout</button>
         <button className= 'small--button' onClick={getUsers}>get Users</button>
         <div className='bottom_right'>
       <button className= 'small--button' onClick={registerDir}>Register</button>

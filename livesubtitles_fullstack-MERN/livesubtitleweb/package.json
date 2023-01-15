@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "random-words": "^1.2.0",
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.8",
@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios|react-media-recorder)/\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest-canvas-mock": "^2.4.0"
   }
 }

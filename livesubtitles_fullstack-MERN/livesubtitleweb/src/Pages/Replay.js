@@ -105,6 +105,7 @@ const UrltoBlob= async()=>{
   return (
     <section>
         <ReactPlayer
+        data-testid = 'audio_player'
         className='react-player'
         url={audio}
         playing={true} 

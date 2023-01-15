@@ -3,6 +3,7 @@ import {useRef} from 'react'
 const GDPRetc = ({onClick}) => {
   const checkRef=useRef()
   const onSubmit =(e)=>{
+    console.log('') // need to find a better route to verify onSubmit is called
     e.preventDefault()
     if(checkRef.current.checked){
       onClick()

@@ -26,10 +26,11 @@ function Record({onClick, Word}) {
     color: "white",
   }
 
-
+/* Reference 4 - taken from https://www.npmjs.com/package/react-media-recorder*/
 return (
   <section>
 <ReactMediaRecorder
+      data-testid = 'record_audio'
       audio
       onStop={(mediaBlobUrl => {setUrl({url: mediaBlobUrl, word: Word})} )} // Save the audio and the word into an object to pass into replay.js
       render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
@@ -50,4 +51,4 @@ return (
 }
 export default Record;
 
-// Code based on the documentation provided for the react-media-recorder library at https://www.npmjs.com/package/react-media-recorder
+/* End of reference 4 */
