@@ -64,7 +64,7 @@ const Login = ({ onClick, registerDir }) => {
     await axios
       .get("/users", {
         headers: {
-          authorization: `Bearer ${accessToken}`,
+          'authorization': `Bearer ${accessToken}`,
         },
       })
       .then((res) => {

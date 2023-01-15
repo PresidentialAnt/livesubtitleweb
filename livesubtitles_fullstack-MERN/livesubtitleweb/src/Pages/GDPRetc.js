@@ -15,6 +15,7 @@ import { ThemeContainer } from "../Components/styles/ThemeSwitching.styled";
 const GDPRetc = ({ onClick }) => {
   const checkRef = useRef();
   const onSubmit = (e) => {
+    console.log('') // For unit testing
     e.preventDefault();
     if (checkRef.current.checked) {
       onClick();
