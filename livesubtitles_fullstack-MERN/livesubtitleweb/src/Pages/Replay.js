@@ -139,6 +139,7 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
       <section>
         <GlobalStyles font={font} fontsize={fontsize} />
         <ReactPlayer
+          data-testid = 'audio_player'
           className="react-player"
           url={audio}
           playing={true}

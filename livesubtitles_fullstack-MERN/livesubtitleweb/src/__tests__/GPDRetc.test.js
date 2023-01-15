@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"
-import GDPRetc from "../GDPRetc";
+import GDPRetc from "../Pages/GDPRetc"
 
 // Test 1: Page and components render correctly
 test("GDPR page renders properly", ()=>{
