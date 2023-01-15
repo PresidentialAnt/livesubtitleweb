@@ -81,7 +81,6 @@ section{
   flex-direction: column;
   align-items: center;
   justify-content: top;
-  height:70vh;
 }
 .div{
   display: flex;
@@ -92,7 +91,6 @@ section{
 
 .gdpr_section{
   padding-block: 5vh;
-  height:90vh;
 }
 
 section > button {

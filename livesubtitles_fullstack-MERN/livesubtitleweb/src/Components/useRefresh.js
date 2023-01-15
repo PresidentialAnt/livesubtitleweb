@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import {TokenContext} from './UserControl'
 import axios from '../api/axios'
+/*Reference 2 based on https://www.youtube.com/watch?v=nI8PYZNFtac*/
 const useRefresh = () => {
     const { setAccessToken }=useContext(TokenContext)
 
@@ -9,7 +10,6 @@ const useRefresh = () => {
           withCredentials: true,
         });
         setAccessToken(response.data.accessToken);
-        // console.log(response.data.accessToken)
         return response.data.accessToken;
       };
 

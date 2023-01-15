@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UrlContext } from "../Components/UrlContext";
 import ReactPlayer from "react-player";
-import recordingService from "../services/recording.service";
 import { TokenContext } from "../Components/UserControl";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../Components/styles/Global";
@@ -52,7 +51,9 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
         var base64data = reader.result;
         /* end of reference 2 */
         body.audioBlob = base64data;
-        recordingService.create(body, accessToken).then(function(){
+        axiosPrivate.post("/recordings", body)
+        .then(function(res){
+          console.log(res.data)
           confirmRecording()
         }).catch(function(err){
           console.log(err)
