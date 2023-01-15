@@ -40,6 +40,6 @@ import userEvent from "@testing-library/user-event"
 // })
 
 
-test('placeholder', ()=>{ // Uncomment this and comment the rest for now since reactmediaplayer has dependency causing jest to error out when it renders record
+test('placeholder', ()=>{ // Uncomment this and comment the rest for now since reactmediaplayer has dependencies that causes jest to error out when it renders record
     expect(true).toBe(true)
 })

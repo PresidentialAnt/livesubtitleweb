@@ -21,7 +21,7 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
 
   const [Hover2, setHover2] = useState(false);
   const [Hover3, setHover3] = useState(false);
-  const context = useContext(UrlContext);
+  const context = useContext(UrlContext); // retrieve the stored blob and word from the record page
 
   const info = context[Object.keys(context)[0]]; // retrieve the url and word from the context
   var audio = info.url; // save the blob url

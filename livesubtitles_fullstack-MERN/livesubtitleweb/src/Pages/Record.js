@@ -17,7 +17,7 @@ function Record({ onClick, Word }) {
   const x = "Hi"; // Change depending on what word to say
   const [Hover1, setHover1] = useState(false);
   const [Hover2, setHover2] = useState(false);
-  const { url, setUrl } = useContext(UrlContext);
+  const { url, setUrl } = useContext(UrlContext); // use this context to pass the stored blob and prompted word to a different page
   const toggleHoverb1 = () => {
     setHover1(!Hover1);
   };
@@ -61,8 +61,8 @@ function Record({ onClick, Word }) {
       <section>
         <GlobalStyles font={font} fontsize={fontsize} />
         <ReactMediaRecorder
-          audio
-          onStop={(mediaBlobUrl) => {
+          audio 
+          onStop={(mediaBlobUrl) => { 
             setUrl({ url: mediaBlobUrl, word: Word });
           }} // Save the audio and the word into an object to pass into replay.js
           render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
