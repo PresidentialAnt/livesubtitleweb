@@ -49,3 +49,5 @@ const port = process.env.PORT || 5000;
   app.listen(port, () => {
     console.log(`Server has started! Now listening on http://localhost:${port}`)
   })
+
+export default server

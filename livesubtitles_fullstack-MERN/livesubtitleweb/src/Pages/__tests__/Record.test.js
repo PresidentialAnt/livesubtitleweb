@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"
-// import Record from "../Record"
+import Record from "../Record"
 
 
 // Test 1: Page and its components render properly  
