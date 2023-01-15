@@ -1,10 +1,12 @@
 import axios from "axios";
 
-export default axios.create({
-    baseURL: 'http://localhost:5000'
-})
+const baseURL='http://localhost:5000'
 
-export const axiosCookies= axios.create({
-    baseURL: 'http://localhost:5000',
+export default axios.create({
+    baseURL: baseURL
+})
+/*Reference 2 https://www.youtube.com/watch?v=nI8PYZNFtac*/
+export const axiosPrivate= axios.create({
+    baseURL: baseURL,
     withCredentials: true
 })

@@ -11,10 +11,12 @@ import {
 } from "../Components/styles/Theme.styled";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../Components/styles/Global";
-
+import useRefresh from "../Components/useRefresh";
+import useAxiosInterceptors from "../Components/useAxiosInterceptors";
 const Login = ({ onClick, registerDir }) => {
   const { accessToken, setAccessToken } = useContext(TokenContext);
-
+  const refreshToken = useRefresh()
+  const axiosPrivate = useAxiosInterceptors()
   const LOGIN_URL = "/login";
 
   const userRef = useRef();
@@ -61,23 +63,19 @@ const Login = ({ onClick, registerDir }) => {
 
   const getUsers = async () => {
     // Gets list of users from server. For testing connection, should be removed in production version.
-    await axios
-      .get("/users", {
-        headers: {
-          'authorization': `Bearer ${accessToken}`,
-        },
-      })
+    await axiosPrivate
+      .get("/users")
       .then((res) => {
         console.log(res.data);
       });
   };
-  const refreshToken = async () => {
-    const response = await axios.get("/refresh", {
-      withCredentials: true,
-    });
-    setAccessToken(response.data.accessToken);
-    console.log(accessToken);
-  };
+  // const refreshToken = async () => {
+  //   const response = await axios.get("/refresh", {
+  //     withCredentials: true,
+  //   });
+  //   setAccessToken(response.data.accessToken);
+  //   console.log(accessToken);
+  // };
 
   const logOut = async () => {
     setAccessToken("");

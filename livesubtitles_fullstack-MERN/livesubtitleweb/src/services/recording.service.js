@@ -1,6 +1,10 @@
-import axios from "../api/axios";
-// service constructed as RESTful API 
+import axios, { axiosPrivate } from "../api/axios";
+import useAxiosInterceptors from "../Components/useAxiosInterceptors";
+
+// service constructed as RESTful API
+
 class RecordingDataService {
+  // static axiosPrivate = useAxiosInterceptors()
   getAll(accessToken) {
     return axios.get("/recordings", {
       headers:{

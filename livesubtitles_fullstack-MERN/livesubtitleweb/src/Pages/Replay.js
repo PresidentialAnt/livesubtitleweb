@@ -5,6 +5,7 @@ import recordingService from "../services/recording.service";
 import { TokenContext } from "../Components/UserControl";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../Components/styles/Global";
+import useRefresh from "../Components/useRefresh";
 import {
   light,
   dark,
@@ -15,10 +16,12 @@ import {
 } from "../Components/styles/Theme.styled";
 import { ThemeContainer } from "../Components/styles/ThemeSwitching.styled";
 import axios from "../api/axios";
+import useAxiosInterceptors from "../Components/useAxiosInterceptors";
 import { default as axiosDef } from "axios";
 const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
   const { accessToken, setAccessToken } = useContext(TokenContext);
-
+  const refreshToken = useRefresh()
+  const axiosPrivate = useAxiosInterceptors()
   const [Hover2, setHover2] = useState(false);
   const [Hover3, setHover3] = useState(false);
   const context = useContext(UrlContext); // retrieve the stored blob and word from the record page
@@ -49,8 +52,12 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
         var base64data = reader.result;
         /* end of reference 2 */
         body.audioBlob = base64data;
-        recordingService.create(body, accessToken); //Sends data to server
-        confirmRecording();
+        recordingService.create(body, accessToken).then(function(){
+          confirmRecording()
+        }).catch(function(err){
+          console.log(err)
+        }); //Sends data to server
+
       };
     });
   };
@@ -98,24 +105,13 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
   const getUsers = async () => {
     // Gets list of users from server. For testing connection, removed in production.
     console.log(accessToken);
-    await axios
-      .get("/users", {
-        headers: {
-          authorization: `Bearer ${accessToken}`,
-        },
-      })
+    await axiosPrivate
+      .get("/users")
       .then((res) => {
         console.log(res.data);
       });
   };
 
-  const refreshToken = async () => {
-    const response = await axios.get("/refresh", {
-      withCredentials: true,
-    });
-    setAccessToken(response.data.accessToken);
-    console.log(accessToken);
-  };
 /* Reference 2 - taken from https://stackoverflow.com/a/48642305*/
   const UrltoBlob = async () => {
     await axiosDef({
@@ -174,7 +170,13 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
           </button>
           <button
             className="small--button"
-            onClick={refreshToken}
+            onClick={()=>{
+              const refTok = async()=>{
+                const newTok=await refreshToken()
+                console.log(newTok)
+              }
+              refTok()
+            }}
             style={b1style}
           >
             refresh

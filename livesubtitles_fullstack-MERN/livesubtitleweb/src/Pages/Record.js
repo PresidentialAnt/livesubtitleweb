@@ -1,5 +1,4 @@
 import { ReactMediaRecorder } from "react-media-recorder";
-import Word_generator from "../Components/Word_generator";
 import { useContext, useState, useEffect } from "react";
 import { UrlContext } from "../Components/UrlContext";
 import { ThemeProvider } from "styled-components";
@@ -67,7 +66,7 @@ function Record({ onClick, Word }) {
           }} // Save the audio and the word into an object to pass into replay.js
           render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
             <div>
-              <Word_generator word={Word}></Word_generator>
+              <h1>Please say: {Word}</h1>
               <p> Recording status: {status}</p>
               <button
                 className="small--button"
