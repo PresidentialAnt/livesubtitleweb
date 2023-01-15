@@ -90,9 +90,6 @@ function Record({ onClick, Word }) {
               >
                 Stop Recording
               </button>
-              {/* <audio src={mediaBlobUrl} controls />
-          {/* <Store_audio url = {mediaBlobUrl}></Store_audio> */}
-              {/* <button className='small--button' onClick={onClick}>Next</button> */}
             </div>
           )}
         />

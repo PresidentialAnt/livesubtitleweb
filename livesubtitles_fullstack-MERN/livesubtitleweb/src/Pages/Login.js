@@ -60,7 +60,7 @@ const Login = ({ onClick, registerDir }) => {
   };
 
   const getUsers = async () => {
-    // Gets list of users from server. For testing connection, should be removed in release version.
+    // Gets list of users from server. For testing connection, should be removed in production version.
     await axios
       .get("/users", {
         headers: {

@@ -19,7 +19,6 @@ import { default as axiosDef } from "axios";
 const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
   const { accessToken, setAccessToken } = useContext(TokenContext);
 
-  const [Hover1, setHover1] = useState(false);
   const [Hover2, setHover2] = useState(false);
   const [Hover3, setHover3] = useState(false);
   const context = useContext(UrlContext);
@@ -34,11 +33,11 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
   console.log(file);
 
   // Note: File and url should be uploaded to a file storage system
-  let body = { audioBlob: audio, partURL: "SomeURL", word: word }; // testing json
+  let body = { audioBlob: '', partURL: "placeholder for scalability", word: word }; 
   const submission = async (body) => {
     console.log(accessToken);
     /* Reference 2 - taken from https://stackoverflow.com/a/48642305*/
-    await axiosDef({
+    await axiosDef({ // Finds the BLOB stored in the browser and converts it to a string
       method: "get",
       url: audio,
       responseType: "blob",
@@ -50,7 +49,8 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
         var base64data = reader.result;
         /* end of reference 2 */
         body.audioBlob = base64data;
-        recordingService.create(body, accessToken);
+        recordingService.create(body, accessToken); //Sends data to server
+        confirmRecording();
       };
     });
   };
@@ -96,7 +96,7 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
   };
 
   const getUsers = async () => {
-    // Gets list of users from server. For testing connection, should be removed in release version.
+    // Gets list of users from server. For testing connection, removed in production.
     console.log(accessToken);
     await axios
       .get("/users", {
@@ -116,11 +116,11 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
     setAccessToken(response.data.accessToken);
     console.log(accessToken);
   };
-
+/* Reference 2 - taken from https://stackoverflow.com/a/48642305*/
   const UrltoBlob = async () => {
     await axiosDef({
       method: "get",
-      url: audio, // blob url eg. blob:http://127.0.0.1:8000/e89c5d87-a634-4540-974c-30dc476825cc
+      url: audio, 
       responseType: "blob",
     }).then((response) => {
       console.log(response);
@@ -129,11 +129,10 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
       reader.onloadend = function () {
         var base64data = reader.result;
         console.log(String(base64data));
-        //  self.props.onMainImageDrop(base64data)
       };
     });
   };
-
+/* end of reference 2 */
   return (
     <ThemeProvider theme={selectedTheme}>
       <section>
@@ -142,7 +141,7 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
           data-testid = 'audio_player'
           className="react-player"
           url={audio}
-          playing={true}
+          playing={false}
           controls={true}
         />
         <div className="options">
