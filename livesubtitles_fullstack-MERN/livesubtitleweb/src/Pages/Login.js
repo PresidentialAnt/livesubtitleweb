@@ -17,7 +17,7 @@ const Login = ({onClick, registerDir}) => {
     login();
   }
 
-  const login=async()=>{
+  const login=async()=>{ //Sends username and password and retrieves tokens if details match.
     try{
       console.log(JSON.stringify({username: userRef.current.value, password: passRef.current.value}))
       let response = await axios.post(LOGIN_URL,{

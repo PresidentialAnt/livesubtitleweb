@@ -1,7 +1,9 @@
 import React from 'react'
 import {useRef} from 'react'
 const GDPRetc = ({onClick}) => {
+
   const checkRef=useRef()
+  
   const onSubmit =(e)=>{
     e.preventDefault()
     if(checkRef.current.checked){

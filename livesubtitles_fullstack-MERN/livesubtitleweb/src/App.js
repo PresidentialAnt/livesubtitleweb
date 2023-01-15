@@ -18,7 +18,7 @@ import UserProvider from './Components/UserControl';
 function App() {
   var randomWords = require('random-words');
   
-  function randomWord(){
+  function randomWord(){ //Generate a random word with the first letter capitalised
     let tmpword=randomWords();
     tmpword=tmpword.charAt(0).toUpperCase() + tmpword.slice(1);
     return(tmpword)

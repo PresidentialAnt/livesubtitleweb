@@ -91,12 +91,13 @@ const UrltoBlob= async()=>{
     url: audio, // blob url eg. blob:http://127.0.0.1:8000/e89c5d87-a634-4540-974c-30dc476825cc
     responseType: 'blob'
 }).then((response)=>{
-  console.log(response)
+  console.log(response.data)
      var reader = new FileReader();
      reader.readAsDataURL(response.data); 
      reader.onloadend = function() {
          var base64data = reader.result;
          console.log(String(base64data))
+         
         //  self.props.onMainImageDrop(base64data)
      }
 
