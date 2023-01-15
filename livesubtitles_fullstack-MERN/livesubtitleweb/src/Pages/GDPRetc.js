@@ -204,7 +204,7 @@ const GDPRetc = ({ onClick }) => {
 
           <ThemeContainer>
             <div className="confirmation">
-              <label className="label">I understand and consent</label>
+              <label className="label">I understand and accept the privacy policy</label>
               <input className="text--input" type="checkbox" ref={checkRef} />
             </div>
           </ThemeContainer>
