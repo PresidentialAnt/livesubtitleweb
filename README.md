@@ -34,3 +34,5 @@ sudo aa-remove-unkown
 DO THIS ONLY IF YOU GET PERMISSION ERRORS
 ### docker rm $(docker ps -a -q)
 This will close and prune all docker images, clean up for when you're done
+
+
