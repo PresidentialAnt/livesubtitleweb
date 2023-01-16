@@ -69,13 +69,6 @@ const Login = ({ onClick, registerDir }) => {
         console.log(res.data);
       });
   };
-  // const refreshToken = async () => {
-  //   const response = await axios.get("/refresh", {
-  //     withCredentials: true,
-  //   });
-  //   setAccessToken(response.data.accessToken);
-  //   console.log(accessToken);
-  // };
 
   const logOut = async () => {
     setAccessToken("");
@@ -97,6 +90,11 @@ const Login = ({ onClick, registerDir }) => {
   const [fontsize, setFontSize] = useState(
     localStorage.getItem("fontsize") || "18px"
   );
+
+  let b1style = {
+    fontFamily: font,
+    fontSize: fontsize,
+  };
 
   useEffect(() => {
     try {
@@ -129,7 +127,7 @@ const Login = ({ onClick, registerDir }) => {
             placeholder="Password"
             ref={passRef}
           />
-          <input className="small--button" type="submit" value="next" />
+          <input className="small--button white--button colored--button" type="submit" value="next" style={b1style}/>
         </form>
         <button className="small--button" onClick={refreshToken}>
           refresh
@@ -141,7 +139,7 @@ const Login = ({ onClick, registerDir }) => {
           get Users
         </button>
         <div className="bottom_right">
-          <button className="small--button" onClick={registerDir}>
+          <button className="small--button white--button colored--button" onClick={registerDir} style={b1style}>
             Register
           </button>
         </div>
