@@ -148,7 +148,7 @@ section > button {
   font-weight: bold;
   border-radius: 25px;
   border: 2.5px solid black;
-  width: calc(140px + 6vw);
+  width: calc(180px + 6vw);
   height: calc(35px + 3vh);
   align-self: center;
   padding-block: 1em;

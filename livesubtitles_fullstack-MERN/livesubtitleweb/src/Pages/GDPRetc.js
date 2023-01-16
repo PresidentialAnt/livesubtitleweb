@@ -210,7 +210,7 @@ const GDPRetc = ({ onClick }) => {
           </ThemeContainer>
           <ThemeContainer>
             <input
-              className="small--button"
+              className="small--button white--button colored--button"
               type="submit"
               value="next"
               style={b1style}
