@@ -10,10 +10,12 @@ The fields that will need to be replaced are in all caps.
 
 ## Running the server
 Install node.js
+
 open `livesubtitleweb\livesubtitles_fullstack-MERN\LiveSubtitleServer` in a terminal and run `npm install`, then `npm start`
 
 ## Running the client
 Install node.js
+
 open `livesubtitleweb\livesubtitles_fullstack-MERN\livesubtitleweb` in a terminal and run `npm install`, then `npm start`
 
 ## Testing either client or server
