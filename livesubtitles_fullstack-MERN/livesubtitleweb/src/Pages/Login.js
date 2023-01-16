@@ -129,13 +129,13 @@ const Login = ({ onClick, registerDir }) => {
           />
           <input className="small--button white--button colored--button" type="submit" value="next" style={b1style}/>
         </form>
-        <button className="small--button" onClick={refreshToken}>
+        <button className="small--button white--button colored--button" onClick={refreshToken}>
           refresh
         </button>
-        <button className="small--button" onClick={logOut}>
+        <button className="small--button white--button colored--button" onClick={logOut}>
           logout
         </button>
-        <button className="small--button" onClick={getUsers}>
+        <button className="small--button white--button colored--button" onClick={getUsers}>
           get Users
         </button>
         <div className="bottom_right">

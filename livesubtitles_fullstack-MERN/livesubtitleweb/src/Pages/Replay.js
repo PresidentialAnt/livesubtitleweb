@@ -137,14 +137,14 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
           >
             Confirm recording
           </button>
-          <button className="small--button " onClick={getUsers} style={bstyle}>
+          <button className="small--button white--button colored--button" onClick={getUsers} style={bstyle}>
             get Users
           </button>
-          <button className="small--button" onClick={UrltoBlob} style={bstyle}>
+          <button className="small--button white--button colored--button" onClick={UrltoBlob} style={bstyle}>
             blobbify
           </button>
           <button
-            className="small--button"
+            className="small--button white--button colored--button"
             onClick={()=>{
               const refTok = async()=>{
                 const newTok=await refreshToken()
