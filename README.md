@@ -7,3 +7,9 @@ In the .env file there are 3 fields that will need to be replaced:
 
 The Privacy Policy page will also need to be modified, as the main organisation, as well as which third-parties will have access to the data will vary.
 The fields that will need to be replaced are in all caps.
+
+## Running the server
+open livesubtitleweb\livesubtitles_fullstack-MERN\LiveSubtitleServer in a terminal and run `npm start`
+
+## Running the client
+open livesubtitleweb\livesubtitles_fullstack-MERN\livesubtitleweb in a terminal and run `npm start`
