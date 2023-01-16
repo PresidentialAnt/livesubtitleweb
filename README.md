@@ -9,7 +9,7 @@ The Privacy Policy page will also need to be modified, as the main organisation,
 The fields that will need to be replaced are in all caps.
 
 ## Running the server
-open livesubtitleweb\livesubtitles_fullstack-MERN\LiveSubtitleServer in a terminal and run `npm start`
+open `livesubtitleweb\livesubtitles_fullstack-MERN\LiveSubtitleServer` in a terminal and run `npm install`, then `npm start`
 
 ## Running the client
-open livesubtitleweb\livesubtitles_fullstack-MERN\livesubtitleweb in a terminal and run `npm start`
+open `livesubtitleweb\livesubtitles_fullstack-MERN\livesubtitleweb` in a terminal and run `npm install`, then `npm start`
