@@ -38,9 +38,6 @@ const Thanks = ({ onClick, debug }) => {
         <button className="small--button blue--button" onClick={onClick} style={b1style}>
           Record another word
         </button>
-        <button className="small--button" onClick={debug} style={b1style}>
-          Check Connectivity Debug
-        </button>
       </section>
     </ThemeProvider>
   );

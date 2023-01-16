@@ -89,19 +89,21 @@ function App() {
       case 9:
         return <About/>
       case 10:
-        return <Register onClick={nextPage} loginDir= {loginDir}/>
+        return <Register loginDir= {loginDir}/>
     }
   }
   return (
     <div className="App">
-      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} aboutDir={aboutDir} settingsDir={settingsDir}/>
+      <UserProvider>
+      <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} aboutDir={aboutDir} settingsDir={settingsDir} loginDir= {loginDir}/>
 
       <main id="page-wrap">
-      <UserProvider>
+      
         {PageSelect(Page)}
-        </UserProvider>
+        
         
       </main>
+      </UserProvider>
 
     </div>
   );

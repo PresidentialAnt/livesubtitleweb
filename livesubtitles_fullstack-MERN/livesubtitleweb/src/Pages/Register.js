@@ -50,7 +50,7 @@ const Register = ({ onClick, loginDir }) => {
         cplevel: cpRef.current.value,
       });
       console.log(JSON.stringify(response));
-      onClick();
+      loginDir();
     } catch (err) {
       console.log("registration failed");
       console.log(err);
@@ -118,14 +118,14 @@ const Register = ({ onClick, loginDir }) => {
             <option value="5">5</option>
           </select>
           <input
-            className="small--button"
+            className="small--button white--button colored--button"
             type="submit"
             value="next"
             style={b1style}
           />
         </form>
         <div className="bottom_right">
-          <button className="small--button" onClick={loginDir} style={b1style}>
+          <button className="small--button white--button colored--button" onClick={loginDir} style={b1style}>
             Login
           </button>
         </div>

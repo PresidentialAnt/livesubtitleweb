@@ -13,7 +13,6 @@ import {
 } from "../Components/styles/Theme.styled";
 
 function Record({ onClick, Word }) {
-  const x = "Hi"; // Change depending on what word to say
   const { url, setUrl } = useContext(UrlContext); // use this context to pass the stored blob and prompted word to a different page
 
   //retrieve theme, font style and font size from local storage

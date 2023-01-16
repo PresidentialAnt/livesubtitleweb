@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { slide as Menu } from "react-burger-menu";
+import axios from "../api/axios";
+import { TokenContext } from "./UserControl";
 
-const SideBar = ({aboutDir,settingsDir}) => {
+
+
+
+const SideBar = ({aboutDir,settingsDir,loginDir}) => {
+
+  const {accesstoken, setAccessToken} = useContext(TokenContext)
+
+  const logOut = async () => {
+    setAccessToken("");
+    const response = await axios.get("/logout", {
+      withCredentials: true,
+    });
+    console.log(response);
+    loginDir();
+  };
+
   return (
     // Pass on our props
     <Menu {...SideBar}>
@@ -15,6 +32,10 @@ const SideBar = ({aboutDir,settingsDir}) => {
 
       <label className="menu-item" onClick={settingsDir}>
         Settings
+      </label>
+
+      <label className="menu-item" onClick={logOut}>
+        Log Out
       </label>
     </Menu>
   );

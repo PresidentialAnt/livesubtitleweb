@@ -42,7 +42,6 @@ app.use(verifyACT); /*  Everything below this line requires an access token, ens
                         if the access token is valid, the associated user will be passed as req.username*/
                         
 app.use('/recordings', require('./routes/recording.route'))
-app.use('/users',require('./routes/users.route'));
 
 
 const port = process.env.PORT || 5000;

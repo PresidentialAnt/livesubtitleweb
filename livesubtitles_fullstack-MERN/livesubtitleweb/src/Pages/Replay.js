@@ -4,7 +4,6 @@ import ReactPlayer from "react-player";
 import { TokenContext } from "../Components/UserControl";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../Components/styles/Global";
-import useRefresh from "../Components/useRefresh";
 import {
   light,
   dark,
@@ -14,12 +13,10 @@ import {
   pink,
 } from "../Components/styles/Theme.styled";
 import { ThemeContainer } from "../Components/styles/ThemeSwitching.styled";
-import axios from "../api/axios";
 import useAxiosInterceptors from "../Components/useAxiosInterceptors";
 import { default as axiosDef } from "axios";
 const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
   const { accessToken, setAccessToken } = useContext(TokenContext);
-  const refreshToken = useRefresh()
   const axiosPrivate = useAxiosInterceptors()
   const context = useContext(UrlContext); // retrieve the stored blob and word from the record page
 
@@ -81,33 +78,6 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
     fontSize: fontsize,
   };
 
-  const getUsers = async () => {
-    // Gets list of users from server. For testing connection, removed in production.
-    console.log(accessToken);
-    await axiosPrivate
-      .get("/users")
-      .then((res) => {
-        console.log(res.data);
-      });
-  };
-
-/* Reference 2 - taken from https://stackoverflow.com/a/48642305*/
-  const UrltoBlob = async () => {
-    await axiosDef({
-      method: "get",
-      url: audio, 
-      responseType: "blob",
-    }).then((response) => {
-      console.log(response);
-      var reader = new FileReader();
-      reader.readAsDataURL(response.data);
-      reader.onloadend = function () {
-        var base64data = reader.result;
-        console.log(String(base64data));
-      };
-    });
-  };
-/* end of reference 2 */
   return (
     <ThemeProvider theme={selectedTheme}>
       <section>
@@ -136,25 +106,6 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
             style={bstyle}
           >
             Confirm recording
-          </button>
-          <button className="small--button " onClick={getUsers} style={bstyle}>
-            get Users
-          </button>
-          <button className="small--button" onClick={UrltoBlob} style={bstyle}>
-            blobbify
-          </button>
-          <button
-            className="small--button"
-            onClick={()=>{
-              const refTok = async()=>{
-                const newTok=await refreshToken()
-                console.log(newTok)
-              }
-              refTok()
-            }}
-            style={bstyle}
-          >
-            refresh
           </button>
         </div>
       </section>

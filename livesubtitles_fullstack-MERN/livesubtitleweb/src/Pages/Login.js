@@ -12,11 +12,9 @@ import {
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../Components/styles/Global";
 import useRefresh from "../Components/useRefresh";
-import useAxiosInterceptors from "../Components/useAxiosInterceptors";
 const Login = ({ onClick, registerDir }) => {
   const { accessToken, setAccessToken } = useContext(TokenContext);
   const refreshToken = useRefresh()
-  const axiosPrivate = useAxiosInterceptors()
   const LOGIN_URL = "/login";
 
   const userRef = useRef();
@@ -61,29 +59,7 @@ const Login = ({ onClick, registerDir }) => {
     }
   };
 
-  const getUsers = async () => {
-    // Gets list of users from server. For testing connection, should be removed in production version.
-    await axiosPrivate
-      .get("/users")
-      .then((res) => {
-        console.log(res.data);
-      });
-  };
-  // const refreshToken = async () => {
-  //   const response = await axios.get("/refresh", {
-  //     withCredentials: true,
-  //   });
-  //   setAccessToken(response.data.accessToken);
-  //   console.log(accessToken);
-  // };
 
-  const logOut = async () => {
-    setAccessToken("");
-    const response = await axios.get("/logout", {
-      withCredentials: true,
-    });
-    console.log(response);
-  };
   //retrieve theme, font style and font size from local storage
   const [selectedTheme, setSelectedTheme] = useState(light);
   useEffect(() => {
@@ -98,6 +74,10 @@ const Login = ({ onClick, registerDir }) => {
     localStorage.getItem("fontsize") || "18px"
   );
 
+  let b1style = {
+    fontFamily: font,
+    fontSize: fontsize,
+  };
   useEffect(() => {
     try {
       async function tryLogin() {
@@ -129,19 +109,10 @@ const Login = ({ onClick, registerDir }) => {
             placeholder="Password"
             ref={passRef}
           />
-          <input className="small--button" type="submit" value="next" />
+          <input className="small--button white--button colored--button" type="submit" value="next" style={b1style}/>
         </form>
-        <button className="small--button" onClick={refreshToken}>
-          refresh
-        </button>
-        <button className="small--button" onClick={logOut}>
-          logout
-        </button>
-        <button className="small--button" onClick={getUsers}>
-          get Users
-        </button>
         <div className="bottom_right">
-          <button className="small--button" onClick={registerDir}>
+          <button className="small--button white--button colored--button" onClick={registerDir} style={b1style}>
             Register
           </button>
         </div>
