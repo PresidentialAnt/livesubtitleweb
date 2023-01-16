@@ -13,3 +13,24 @@ open `livesubtitleweb\livesubtitles_fullstack-MERN\LiveSubtitleServer` in a term
 
 ## Running the client
 open `livesubtitleweb\livesubtitles_fullstack-MERN\livesubtitleweb` in a terminal and run `npm install`, then `npm start`
+
+## Testing either client or server
+from highest relevant directory `\livesubtitleweb` or `\LiveSubtitleServer` in terminal (not node or VSCode debug instance), run `npm test`
+
+## For Docker
+Please note docker may not work as of the update to the token system
+From `livesubtitleweb\livesubtitles_fullstack-MERN`:
+### docker compose up
+This will compose 3 containers, client, server, and mongodb instance
+### docker ps
+This will show all currently existing docker images loaded to containers
+### docker compose down
+This will close all currently running containers
+There are common issues with this method due to apparmor profiles
+If so please use: 
+```
+sudo aa-remove-unkown
+```
+DO THIS ONLY IF YOU GET PERMISSION ERRORS
+### docker rm $(docker ps -a -q)
+This will close and prune all docker images, clean up for when you're done
