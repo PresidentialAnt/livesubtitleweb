@@ -14,16 +14,7 @@ import {
 
 function Record({ onClick, Word }) {
   const x = "Hi"; // Change depending on what word to say
-  const [Hover1, setHover1] = useState(false);
-  const [Hover2, setHover2] = useState(false);
   const { url, setUrl } = useContext(UrlContext); // use this context to pass the stored blob and prompted word to a different page
-  const toggleHoverb1 = () => {
-    setHover1(!Hover1);
-  };
-
-  const toggleHoverb2 = () => {
-    setHover2(!Hover2);
-  };
 
   //retrieve theme, font style and font size from local storage
   const [selectedTheme, setSelectedTheme] = useState(light);
@@ -39,17 +30,7 @@ function Record({ onClick, Word }) {
     localStorage.getItem("fontsize") || "18px"
   );
 
-  let b1style = {
-    backgroundColor: Hover1 ? "grey" : "red",
-    color: "white",
-    fontFamily: font,
-    marginTop: 70,
-    fontSize: fontsize,
-  };
-
-  let b2style = {
-    backgroundColor: Hover2 ? "grey" : "green",
-    color: "white",
+  let bstyle = {
     fontFamily: font,
     marginTop: 70,
     fontSize: fontsize,
@@ -69,23 +50,19 @@ function Record({ onClick, Word }) {
               <h1>Please say: {Word}</h1>
               <p> Recording status: {status}</p>
               <button
-                className="small--button"
+                className="small--button green--button colored--button"
                 onClick={startRecording}
-                style={b2style}
-                onMouseEnter={toggleHoverb2}
-                onMouseLeave={toggleHoverb2}
+                style={bstyle}
               >
                 Start Recording
               </button>
               <button
-                className="small--button"
+                className="small--button red--button colored--button"
                 onClick={() => {
                   stopRecording();
                   onClick();
                 }}
-                style={b1style}
-                onMouseEnter={toggleHoverb1}
-                onMouseLeave={toggleHoverb1}
+                style={bstyle}
               >
                 Stop Recording
               </button>

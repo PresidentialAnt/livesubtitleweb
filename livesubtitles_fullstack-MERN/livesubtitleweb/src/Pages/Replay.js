@@ -21,8 +21,6 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
   const { accessToken, setAccessToken } = useContext(TokenContext);
   const refreshToken = useRefresh()
   const axiosPrivate = useAxiosInterceptors()
-  const [Hover2, setHover2] = useState(false);
-  const [Hover3, setHover3] = useState(false);
   const context = useContext(UrlContext); // retrieve the stored blob and word from the record page
 
   const info = context[Object.keys(context)[0]]; // retrieve the url and word from the context
@@ -63,12 +61,6 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
     });
   };
 
-  const toggleHoverb2 = () => {
-    setHover2((prevstate) => !prevstate);
-  };
-  const toggleHoverb3 = () => {
-    setHover3((prevstate) => !prevstate);
-  };
 
   //retrieve theme, font style and font size from local storage
   const [selectedTheme, setSelectedTheme] = useState(light);
@@ -84,21 +76,7 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
     localStorage.getItem("fontsize") || "18px"
   );
 
-  let b1style = {
-    fontFamily: font,
-    fontSize: fontsize,
-  };
-
-  let b2style = {
-    backgroundColor: Hover2 ? "grey" : "green",
-    color: "white",
-    fontFamily: font,
-    fontSize: fontsize,
-  };
-
-  let b3style = {
-    backgroundColor: Hover3 ? "grey" : "blue",
-    color: "white",
+  let bstyle = {
     fontFamily: font,
     fontSize: fontsize,
   };
@@ -143,30 +121,26 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
         />
         <div className="options">
           <button
-            className="small--button"
+            className="small--button blue--button colored--button"
             onClick={retakeRecording}
-            style={b3style}
-            onMouseEnter={toggleHoverb3}
-            onMouseLeave={toggleHoverb3}
+            style={bstyle}
           >
             re-take recording
           </button>
           <button
-            className="small--button"
+            className="small--button green--button colored--button"
             onClick={() => {
               submission(body);
               console.log(accessToken);
             }}
-            style={b2style}
-            onMouseEnter={toggleHoverb2}
-            onMouseLeave={toggleHoverb2}
+            style={bstyle}
           >
             Confirm recording
           </button>
-          <button className="small--button" onClick={getUsers} style={b1style}>
+          <button className="small--button " onClick={getUsers} style={bstyle}>
             get Users
           </button>
-          <button className="small--button" onClick={UrltoBlob} style={b1style}>
+          <button className="small--button" onClick={UrltoBlob} style={bstyle}>
             blobbify
           </button>
           <button
@@ -178,7 +152,7 @@ const Replay = ({ confirmRecording, retakeRecording, Recording }) => {
               }
               refTok()
             }}
-            style={b1style}
+            style={bstyle}
           >
             refresh
           </button>

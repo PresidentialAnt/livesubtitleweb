@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CP Speech Collector",
+  "name": "Cerebral Palsy Speech Collection Tool",
   "icons": [
     {
       "src": "favicon.ico",

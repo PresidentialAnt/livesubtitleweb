@@ -154,6 +154,24 @@ section > button {
   padding-block: 1em;
   cursor: pointer;
 }
+
+.blue--button{
+  background-color:blue;
+  color: white;
+}
+.red--button{
+  background-color:red;
+  color: white;
+}
+.green--button{
+  background-color:green;
+  color: white;
+}
+.colored--button:hover{
+  background-color:grey;
+}
+
+
 .text--input{
   margin: 5px;
   border-radius: 15px;

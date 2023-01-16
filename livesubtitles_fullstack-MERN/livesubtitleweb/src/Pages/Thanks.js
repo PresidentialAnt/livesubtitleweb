@@ -35,7 +35,7 @@ const Thanks = ({ onClick, debug }) => {
         <GlobalStyles font={font} fontsize={fontsize} />
         <h1>Thank you for participating!</h1>
         <p></p>
-        <button className="small--button" onClick={onClick} style={b1style}>
+        <button className="small--button blue--button" onClick={onClick} style={b1style}>
           Record another word
         </button>
         <button className="small--button" onClick={debug} style={b1style}>
