@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }))
 /*
 * MONGOOSE/MONGODB
 */
-mongoose.connect(process.env.DATABASE_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
   })
   .then(() => console.log("Connected to mongoose server"))
